@@ -73,4 +73,4 @@ plugins:
 nav:
   - home: index.md
   - Basis⏳:
-      - Preface: _basis/index.md
+      - Preface: _basis/index.md 
