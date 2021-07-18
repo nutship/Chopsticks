@@ -1,0 +1,43 @@
+.sphere {
+  --circle-rotate-duration: 3s;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
+  height: 8rem;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  animation: rotate-z calc(var(--circle-rotate-duration) * 6) linear both infinite;
+}
+.sphere .circles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotateZ(calc(var(--j) * 0.5turn / var(--circles-count)));
+}
+.sphere .circles .circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px solid white;
+  border-radius: 50%;
+  animation: rotate-x calc(var(--circle-rotate-duration) * calc(1 + 0.125 * var(--i))) calc(var(--circle-rotate-duration) * var(--i) / var(--circles-count)) linear both infinite;
+}
+
+@keyframes rotate-z {
+  from {
+    transform: rotateZ(0);
+  }
+  to {
+    transform: rotateZ(1turn);
+  }
+}
+@keyframes rotate-x {
+  from {
+    transform: rotateX(0);
+  }
+  to {
+    transform: rotateX(1turn);
+  }
+}

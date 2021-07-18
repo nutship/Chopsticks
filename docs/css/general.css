@@ -1,0 +1,228 @@
+/********** color scheme **********/
+
+[data-md-color-scheme="rubble"] {
+    --md-primary-fg-color:        #393333;
+    --md-primary-fg-color--light: #1b7279;
+    --md-primary-fg-color--dark:  #4c6af0;
+}
+
+/********** ul-li **********/
+:root {
+    --ul1-margin-left: 1.25rem;
+    --ul1-margin-top: 0.36rem;
+    --ul1-line-height: 1.2rem;
+    --ul2-margin-left: 1.85rem;
+    --ul2-margin-top: -0.2rem;
+    --ul2-line-height: 1.2rem;
+}
+
+.md-typeset ul {
+    margin-top:       -0.1rem;
+    margin-bottom:    0.4rem;
+    line-height:      var(--ul1-line-height);
+}
+
+.md-typeset ul li {
+    margin-left:      var(--ul1-margin-left);
+    margin-top:       var(--ul1-margin-top);
+} 
+
+.md-typeset ul li ul {
+    margin-top:       0.5rem;
+    margin-bottom:    0.2rem;
+    line-height:      var(--ul2-line-height);
+    list-style-type:  circle;
+}
+
+.md-typeset ul li ul li {
+    margin-left:      var(--ul2-margin-left);
+    margin-top:       var(--ul2-margin-top);
+}
+
+/********** tabbed label of codes **********/
+.md-typeset .tabbed-set > label {
+    font-family: msf;
+}
+
+.md-typeset .tabbed-set {
+    margin-top: 0em;
+    margin-bottom: 0.7em;
+}
+
+/********** top nav **********/
+div.md-container nav.md-tabs {
+    font-family: cycn-eng;
+}
+
+/********** image **********/
+.floatpic .caption {
+    font-family: cycn-eng, cycn;
+    line-height: 12px;
+    font-size: 0.20rem;
+    color: #7e7e7e;
+}
+
+.floatpic p {
+    display: inline;
+}
+
+/********** blockquotes **********/
+.md-typeset blockquote {
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+    margin-left: 0.08rem;
+}
+
+.md-typeset blockquote p {
+    display: inline;
+}
+
+/*********************************************************************************/
+/*************************** FONT CLASS BLOCK: generalcy *************************/
+/*********************************************************************************/
+
+/*********** set ul & p ***********/
+:root {
+    --generalcy-font-size: 0.73rem;
+    --generalcy-letter-spacing: 0.022rem;
+    --generalcy-cy-font-size: 0.679rem;
+}
+
+.generalcy {
+    font-family: cycn;
+}
+
+/* :( */
+.generalcy p {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+
+.generalcy p, .generalcy ul {
+    font-size: var(--generalcy-font-size); /* 15px on win */
+    letter-spacing: var(--generalcy-letter-spacing);
+}
+
+.generalcy ul ul {
+    font-size: 99%;
+}
+
+/*********** title ***********/
+.generalcy h1,
+.generalcy h2,
+.generalcy h3,
+.generalcy h4,
+.generalcy h5,
+.generalcy h6 {
+    font-family: cycn, cycn-eng;
+}
+
+.generalcy h3 {
+    font-size: 1.04rem;
+}
+
+.generalcy h4, .generalcy h3, .generalcy h2 {
+    word-spacing: 0.2rem;
+}
+
+.generalcy h4 {
+    font-size: 0.78rem;
+    margin-top: 1.5em;
+    margin-bottom: 1.2em;
+}
+
+
+/*********** Table Of Contents On Both Sides ***********/
+/* left contents */
+div.md-sidebar.md-sidebar--primary ul.md-nav__list {
+    font-family: cycn-eng;
+    font-size: 0.672rem;
+}
+
+/* right contents */
+div.md-sidebar.md-sidebar--secondary ul.md-nav__list {
+    font-family: cycn, cycn-eng;
+    font-size: 0.684rem;
+}
+
+
+/*********** Font Blocks ***********/
+/* font size of general English words */
+.generalcy cy {
+	font-family: cycn-eng;
+    font-size: var(--generalcy-cy-font-size);
+    /* word-wrap: break-word;
+    overflow: hidden; */
+    word-spacing: 0.10rem;
+    
+}
+
+/* font size of mathematical English words */
+.generalcy msf {
+    font-family: msf, cycn;
+    font-size: var(--generalcy-font-size);
+    word-break: break-all;
+}
+
+.generalcy mag {
+    font-family: m, cycn;
+    font-size: var(--generalcy-font-size);
+    word-break: break-all;
+}
+
+.generalcy mtt {
+    font-family: mtt, cycn;
+    font-size: var(--generalcy-font-size);
+    word-break: break-all;
+}
+
+.md-typeset pre {
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+}
+
+.md-typeset .highlighttable div.highlight pre {
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+.md-typeset .highlighttable div.linenodiv pre {
+    margin-top: 0em;
+}
+
+.md-typeset table code {
+    word-break: normal;
+}
+
+div.outerlink {
+    line-height: 38px;
+    font-size: var(--generalcy-font-size);
+}
+
+div.outerlink a {
+    color: blue;
+    text-decoration: underline;
+    margin-left: 30px;
+}
+
+blockquote.ktb {
+	background: #f9f9f9;
+	color: #000000;
+	/* width: 800px; */
+	border-left: 3px solid #696969;
+	border-top: 2px solid #f0ffff;
+	border-bottom: 2px solid #f0ffff;
+}
+
+blockquote.ktb blockquote {
+    font-size: 0.69rem;
+    color: #3f3d3d;
+    border-left: 0px;
+    margin-left: 0px;
+    padding-left: 4px;
+    margin-top: 8px;
+}
+
+blockquote.ktb blockquote p,  blockquote.ktb blockquote ul {
+    font-size: 0.69rem;
+}

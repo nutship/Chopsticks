@@ -1,0 +1,126 @@
+<html>
+    <meta charset="UTF-8">
+    <head>
+        <link rel="stylesheet" href="css/fonts.css">
+        <!-- <link rel="stylesheet" href="css/gadgets/snow.css">
+        <link rel="stylesheet" href="css/gadgets/loading.css"> -->
+        <link rel="stylesheet" href="css/gadgets/shinebutton.css">
+        <!-- <link rel="stylesheet" href="css/gadgets/glitchtext.css"> -->
+        <link rel="stylesheet" href="css/gadgets/solidrotation.css">
+        <link rel="stylesheet" href="css/gadgets/clipcontent.css">
+        <link rel="stylesheet" href="css/gadgets/revealtext.css">
+        <!-- <link rel="stylesheet" href="css/gadgets/ghost.css"> -->
+        <link rel="stylesheet" href="css/gadgets/starsky.css">
+        <link rel="stylesheet" href="css/gadgets/moon.css">
+        <link rel="stylesheet" href="css/gadgets/ring.css">
+        <style>
+            body {
+                margin: 0;
+                display: flex;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                min-height: 100vh;
+                background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+                overflow: hidden;
+                filter: drop-shadow(0 0 10px white);
+            }
+
+            .cross-bar-glitch .bars {
+                left: 4rem;
+            }
+        </style>
+        <script src="../js/gadgets/ring.js"></script>
+    </head>
+<body>
+<div class="starsky">
+    <!-- star sky -->
+    <div class="landscape"></div>
+    <div class="filtersky"></div>
+    <canvas id="canvas" style="position:absolute"></canvas>
+    <div style="position: relative; z-index: 1; float:right; margin-right: 9rem; top: 4rem; width:100px; height: 100px">
+        <div class="moon" style="width:100px; height: 100px;"></div>
+    </div>
+    <div style="clear:left; height: 9rem;"></div>
+
+    <!-- title -->
+    <div class="sphere" style="--circles-count: 3; left: 4rem; float: left;">
+        <div class="circles" style="--j: 1">
+        <div class="circle" style="--i: 1"></div>
+        <div class="circle" style="--i: 2"></div>
+        <div class="circle" style="--i: 3"></div>
+        </div>
+        <div class="circles" style="--j: 2">
+        <div class="circle" style="--i: 1"></div>
+        <div class="circle" style="--i: 2"></div>
+        <div class="circle" style="--i: 3"></div>
+        </div>
+        <div class="circles" style="--j: 3">
+        <div class="circle" style="--i: 1"></div>
+        <div class="circle" style="--i: 2"></div>
+        <div class="circle" style="--i: 3"></div>
+        </div>
+    </div>
+    <div class="reveal" style="float: left; left: 8rem; top: 2rem; font-family: cycn-eng;">
+    &emsp;Rubble&emsp;
+    </div>
+    <div style="clear: both;"></div>
+
+    <!-- start button -->
+    <a href="_csapp/" title="Preface" style="margin-left: 10rem;">
+        <button class="btn btn-primary btn-ghost btn-shine" style="top: 2rem; left: 6rem;">
+            open
+        </button>
+    </a>
+    <div style="clear:both;"></div>
+    <!-- invisible button -->
+    <button onclick="toggleShape()" id="rbtn" style="background: transparent; border:none;"></button>
+    <!-- spinning numbers -->
+    <div id="container" style="float: right; margin-right: 4rem;">
+        <div id="stage">
+            <div id="shape" class=" backfaces  cube">
+            <div class="plane one">0</div>
+            <div class="plane two">1</div>
+            <div class="plane three">0</div>
+            <div class="plane four">1</div>
+            <div class="plane five">0</div>
+            <div class="plane six">1</div>
+            <div class="plane seven">0</div>
+            <div class="plane eight">1</div>
+            <div class="plane nine">0</div>
+            <div class="plane ten">1</div>
+            <div class="plane eleven">0</div>
+            <div class="plane twelve">1</div>
+            </div>
+        </div>
+    </div>
+    <!-- toc -->
+    <div class="shadow" style="float: left;">
+        <div class="card">
+        <div class="card-header" style="float: none;position: relative;">⭐</div>
+        <div class="card-body" style="float: none;position: relative;">
+            <dl>
+            <span>
+                <dt><a href="/general" target="_blank"><svg id="Capa_1" enable-background="new 0 0 512 512" height="20" width="20" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><g><path d="m128 68.143h188v358.214h-188z" fill="#09a1e5"></path><path d="m256 0-128 68.143 128 68.143h128v-68.143z" fill="#3ec3ff"></path><path d="m324 136.286 60 375.714 128-68.143v-307.571z" fill="#962b7c"></path><path d="m256 136.286v136.286l-50 85.642 50 85.643 128 68.143v-375.714z" fill="#cb2e81"></path><path d="m512 136.286-128-68.143-128 68.143 128 68.142z" fill="#ff3187"></path><path d="m68 272.572 60 239.428 128-68.143v-171.285z" fill="#ff9259"></path><path d="m0 272.572v171.285l128 68.143v-239.428z" fill="#ffb24a"></path><path d="m128 204.428-128 68.144 128 68.142 128-68.142z" fill="#ffd23b"></path></g></svg></a></dt>
+                <dd>general</dd>
+            </span>
+            <span>
+                <dt style="fill:white"><a href="/test_tab"><svg style="color: white;" id="Capa_1" enable-background="new 0 0 510.641 510.641" height="20" viewBox="0 0 510.641 510.641" width="20" xmlns="http://www.w3.org/2000/svg"><g><path d="m255.32 34.641 66.503 38.395 15-25.98-81.503-47.056-81.502 47.056 15 25.98z"></path><path d="m64.206 144.98 66.503-38.395-15-25.981-81.503 47.056v94.111h30z"></path><path d="m64.206 288.87h-30v94.11l81.503 47.056 15-25.98-66.503-38.396z"></path><path d="m255.32 476-66.502-38.396-15 25.981 81.502 47.056 81.503-47.056-15-25.981z"></path><path d="m446.434 365.66-66.502 38.396 15 25.98 81.502-47.056v-94.11h-30z"></path><path d="m394.932 80.604-15 25.981 66.502 38.395v76.791h30v-94.111z"></path><path d="m416.401 348.32v-168.679l-146.081 84.339v168.68z"></path><path d="m109.239 153.66 146.081 84.34 146.081-84.34-146.081-84.34z"></path><path d="m94.24 348.32 146.08 84.34v-168.68l-146.08-84.339z"></path></g></svg></a></dt>
+                <dd>test_tab</dd>
+            </span>
+            <span>
+                <dt><a href=""><svg t="1580195327065" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10241" width="27" height="27"><path d="M914.285714 708.534857q0 15.433143-5.705143 40.301714t-11.995429 39.131429q-11.995429 28.598857-69.705143 60.562286-53.686857 29.110857-106.276571 29.110857-15.433143 0-29.988571-1.974857t-32.841143-7.168-27.136-8.265143-31.744-11.702857-28.013714-10.313143q-56.027429-19.968-99.986286-47.396571-73.142857-45.129143-151.113143-123.172571t-123.172571-151.113143q-27.428571-44.032-47.396571-99.986286-1.682286-5.12-10.313143-28.013714t-11.702857-31.744-8.265143-27.136-7.168-32.841143-1.974857-29.988571q0-52.589714 29.110857-106.276571 32.036571-57.709714 60.562286-69.705143 14.262857-6.290286 39.131429-11.995429t40.301714-5.705143q7.972571 0 11.995429 1.682286 10.313143 3.437714 30.281143 43.446857 6.290286 10.825143 17.115429 30.866286t19.968 36.278857 17.700571 30.573714q1.682286 2.267429 10.020571 14.262857t12.288 20.260571 4.022857 16.310857q0 11.410286-16.310857 28.598857t-35.401143 31.451429-35.401143 30.281143-16.310857 26.258286q0 5.12 2.852571 12.873143t4.827429 11.702857 7.972571 13.677714 6.582857 10.825143q43.446857 78.262857 99.401143 134.290286t134.290286 99.401143q1.170286 0.585143 10.825143 6.582857t13.677714 7.972571 11.702857 4.827429 12.873143 2.852571q10.313143 0 26.258286-16.310857t30.281143-35.401143 31.451429-35.401143 28.598857-16.310857q7.972571 0 16.310857 4.022857t20.260571 12.288 14.262857 10.020571q14.262857 8.557714 30.573714 17.700571t36.278857 19.968 30.866286 17.115429q40.009143 19.968 43.446857 30.281143 1.682286 4.022857 1.682286 11.995429z" p-id="10242" fill="#4289ff"></path></svg></a></dt>
+                <dd>...</dd>
+            </span>
+            </dl>
+        </div>
+        </div>
+    </div>    
+</div>
+
+</body>
+
+<script src="../js/gadgets/starsky.js"></script>
+<!-- <script src="../js/gadgets/glitchtext.js"></script> -->
+<script src="../js/gadgets/revealtext.js"></script>
+</html>

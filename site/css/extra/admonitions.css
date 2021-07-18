@@ -1,0 +1,129 @@
+:root {
+    --extra-admonition-margin-top: 1.25rem;
+    --admonition-font-size: 0.739rem;
+    --admonition-header-font-size: 0.739rem;
+    --admonition-cy-font-size: 0.67rem;
+}
+
+/*
+ *    Note: add new admonition below and add ul setting here.
+ */
+
+.md-typeset .admonition.hint ul,
+.md-typeset details.hint ul,
+.md-typeset .admonition.caution ul,
+.md-typeset details.caution ul {
+    margin-top: -0.2rem;
+}
+
+/*********************************** Admonition: HINT *************************************/
+
+:root {
+    --md-admonition-icon--hint: url("data:image/svg+xml;charset=utf-8,<?xml version='1.0' encoding='UTF-8'?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' id='mdi-fire' width='24' height='24' viewBox='0 0 24 24'><path d='M17.66 11.2C17.43 10.9 17.15 10.64 16.89 10.38C16.22 9.78 15.46 9.35 14.82 8.72C13.33 7.26 13 4.85 13.95 3C13 3.23 12.17 3.75 11.46 4.32C8.87 6.4 7.85 10.07 9.07 13.22C9.11 13.32 9.15 13.42 9.15 13.55C9.15 13.77 9 13.97 8.8 14.05C8.57 14.15 8.33 14.09 8.14 13.93C8.08 13.88 8.04 13.83 8 13.76C6.87 12.33 6.69 10.28 7.45 8.64C5.78 10 4.87 12.3 5 14.47C5.06 14.97 5.12 15.47 5.29 15.97C5.43 16.57 5.7 17.17 6 17.7C7.08 19.43 8.95 20.67 10.96 20.92C13.1 21.19 15.39 20.8 17.03 19.32C18.86 17.66 19.5 15 18.56 12.72L18.43 12.46C18.22 12 17.66 11.2 17.66 11.2M14.5 17.5C14.22 17.74 13.76 18 13.4 18.1C12.28 18.5 11.16 17.94 10.5 17.28C11.69 17 12.4 16.12 12.61 15.23C12.78 14.43 12.46 13.77 12.33 13C12.21 12.26 12.23 11.63 12.5 10.94C12.69 11.32 12.89 11.7 13.13 12C13.9 13 15.11 13.44 15.37 14.8C15.41 14.94 15.43 15.08 15.43 15.23C15.46 16.05 15.1 16.95 14.5 17.5H14.5Z'/></svg>")
+}
+
+/* set title font size for non-collapsible ver */
+.md-typeset .admonition.hint p.admonition-title {
+    font-weight: 500;
+    line-height: 0.96rem;
+    /* margin-bottom: var(--extra-admonition-margin-top); */
+}
+
+/* repeatable settings for collapsible ver */
+.md-typeset details.hint summary {
+    border-width: 0px;
+    font-family: cycn-eng, cycn;
+    font-weight: 500;
+    line-height: 0.96rem;
+    /* margin-bottom: var(--extra-admonition-margin-top); */
+}
+
+.md-typeset .admonition.hint,
+.md-typeset details.hint {
+    border-color: rgb(49, 185, 81);
+    font-family: cycn;
+    border-width: 0.176rem;
+}
+
+/* background color of top-bar */
+.md-typeset .hint > .admonition-title,
+.md-typeset .hint > summary {
+    background-color: rgba(43, 155, 70, 0.1);
+}
+
+/* background color of icon */
+.md-typeset .hint > .admonition-title::before,
+.md-typeset .hint > summary::before {
+    background-color: rgb(43, 155, 70);
+    -webkit-mask-image: var(--md-admonition-icon--hint);
+            mask-image: var(--md-admonition-icon--hint);
+}
+
+.md-typeset .hint ul, .md-typeset .hint p {
+    font-size: var(--admonition-font-size);
+    letter-spacing: normal;
+}
+
+.md-typeset .hint cy {
+    font-size: var(--admonition-cy-font-size);
+}
+
+.md-typeset .hint .admonition-title, .md-typeset summary, .md-typeset .hint .admonition-title cy {
+    font-size: var(--admonition-header-font-size);
+}
+
+
+/*********************************** Admonition: CAUTION *************************************/
+:root {
+    --md-admonition-icon--caution: url("data:image/svg+xml;charset=utf-8,<?xml version='1.0' encoding='UTF-8'?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' id='mdi-alert' width='24' height='24' viewBox='0 0 24 24'><path d='M13 14H11V9H13M13 18H11V16H13M1 21H23L12 2L1 21Z'/></svg>")
+}
+
+/* set title font size for non-collapsible ver */
+.md-typeset .admonition.caution p.admonition-title {
+    font-weight: 500;
+    line-height: 0.96rem;
+    /* margin-bottom: var(--extra-admonition-margin-top); */
+}
+
+/* repeatable settings for collapsible ver */
+.md-typeset details.caution summary {
+    border-width: 0px;
+    font-family: cycn-eng, cycn;
+    font-weight: 500;
+    line-height: 0.96rem;
+    /* padding-bottom: 0px;; */
+}
+
+.md-typeset .admonition.caution,
+.md-typeset details.caution {
+    border-color: rgb(228, 224, 5);
+    font-family: cycn;
+    border-width: 0.176rem;
+}
+
+/* background color of top-bar */
+.md-typeset .caution > .admonition-title,
+.md-typeset .caution > summary {
+    background-color: rgba(233, 220, 42, 0.1);
+}
+
+/* background color of icon */
+.md-typeset .caution > .admonition-title::before,
+.md-typeset .caution > summary::before {
+    background-color: rgb(240, 176, 59);
+    -webkit-mask-image: var(--md-admonition-icon--caution);
+            mask-image: var(--md-admonition-icon--caution);
+}
+
+.md-typeset .caution ul, .md-typeset .caution p {
+    font-size: var(--admonition-font-size);
+    letter-spacing: normal;
+}
+
+.md-typeset .caution cy {
+    font-size: var(--admonition-cy-font-size);
+}
+
+.md-typeset .caution .admonition-title, .md-typeset summary, .md-typeset .caution .admonition-title cy {
+    font-size: var(--admonition-header-font-size);
+}

@@ -1,0 +1,55 @@
+:root {
+    --wcode-background-color: #ffffff;
+    --wcode-font-family: msf;
+}
+
+/********* internal blockquote *********/
+.wcode blockquote {
+    border-left: 0.2rem solid #858383;
+}
+
+/********* highlight *********/
+.wcode div .highlight pre code {
+    font-family: var(--wcode-font-family);
+    background-color: var(--wcode-background-color);
+    border: 1px solid;
+}
+
+.wcode div > .highlight {
+    /* float: left;
+    margin-bottom: 8px;
+    margin-top: 4px; */
+    /* setted by js */
+}
+
+.wcode div .highlight > pre {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+/********* highlighttable *********/
+.wcode div table.highlighttable {
+    border: 1px solid;
+    /* float: left; 
+    margin-top: 4px;
+    margin-bottom: 8px; */
+    /* setted by js */
+}
+
+.wcode div table.highlighttable .highlight pre code {
+    border: none;
+}
+
+.wcode div table.highlighttable td.linenos {
+    background-color: var(--wcode-background-color);
+}
+
+.wcode div table.highlighttable td.linenos > div.linenodiv > pre {
+    font-family: var(--wcode-font-family);
+}
+
+.wcode div table.highlighttable td.code > div.highlight pre code {
+    font-family: var(--wcode-font-family);
+    background-color: var(--wcode-background-color);
+}

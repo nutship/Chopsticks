@@ -1,0 +1,18 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+{% if 'tabs.changeicon' in config.theme['features'] %}
+  {% set icons = config.theme['icons'] %}
+  {% set tabname = page.url.split('/')[0] %}
+  {% if tabname == '' %}
+    {% set tabname = 'home' %}
+  {% endif %}
+  {% set icon = icons[tabname] or "material/library" %}
+  {% include ".icons/" ~ icon ~ ".svg" %}
+{% elif config.theme.logo %}
+  <img src="{{ config.theme.logo | url }}" alt="logo">
+{% else %}
+  {% set icon = config.theme.icon.logo or "material/library" %}
+  {% include ".icons/" ~ icon ~ ".svg" %}
+{% endif %}
+

@@ -1,0 +1,34 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+{% set class = "md-tabs" %}
+{% if page.ancestors | length > 0 %}
+  {% set class = "md-tabs md-tabs--active" %}
+{% endif %}
+<nav class="{{ class }}" aria-label="{{ lang.t('tabs.title') }}" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      {% for nav_item in nav %}
+        {% include "partials/tabs-item.html" %}
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+{% if 'colors' in config.theme['features'] %}
+  {% set colors = config.theme['colors'] %}
+  {% set tabname = page.url.split('/')[0] %}
+  {% if tabname == '' %}
+    {% set tabname = 'home' %} 
+  {% endif %} 
+  {% set color = colors[tabname] or colors['default'] or '/#000000' %}
+  {% set color = color[1:] %}
+  <script>
+  document.getElementsByClassName('md-header')[0].style.setProperty('--md-primary-fg-color', '{{color}}');
+  var tabs1 = document.getElementsByClassName('md-tabs')[0]; if(tabs1) tabs1.style.setProperty('--md-primary-fg-color', '{{color}}');
+  // 'md-default-color'
+  // var tabs2 = document.getElementsByClassName('md-nav__title'); 
+  // if (tabs2)
+  //   for (var i = 0; i < tabs2.length; ++i)
+  //     tabs2[i].style.setProperty('--md-primary-fg-color', '{{color}}');
+  </script>
+{% endif %}
