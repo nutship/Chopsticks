@@ -74,3 +74,9 @@ nav:
   - home: index.md
   - Basis⏳:
       - Preface: _basis/index.md 
+      - Basis:
+        - compound type: _basis/_basis/compound_type.md
+        - type: _basis/_basis/type.md
+      # - 1. primitive types: _basis/primitive_type.md
+      - OOP:
+        - constructor: _basis/_oop/constructor.md 
