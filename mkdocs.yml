@@ -79,4 +79,5 @@ nav:
         - type: _basis/_basis/type.md
       # - 1. primitive types: _basis/primitive_type.md
       - OOP:
-        - constructor: _basis/_oop/constructor.md 
+        - constructor: _basis/_oop/constructor.md
+        - copy control: _basis/_oop/copy_control1.md 

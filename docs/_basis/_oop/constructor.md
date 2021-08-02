@@ -33,9 +33,9 @@ class A {    A() = default;    };
 
 并不推荐这样做，例如数组和指针的默认初始化值是 undefined.
 
-### 3. 转换构造函数
+### 3. 单参构造函数
 
-如果构造函数只有一个形参，那么它为这个类定义了一个隐式转换机制。
+如果构造函数只有一个形参，该构造函数可以被隐式调用 (1. 等号右值； 2. 函数传参)。(按 C++ Primer 的意思，标准流程是先调用原本的单参构造函数创建临时对象，然后再拷贝初始化过去，编译器通常优化为直接调用单参 ctor.)
 
 ```cpp
 class Book {
@@ -46,12 +46,13 @@ class Book {
 void read(Book book) { cout << "reading" << endl; }
 
 int main() {
-    read(string("Eat"));          // case1
-    Book book = string("Sleep");  // case2
+    Book book(string("Org"));     // 显式直接调用
+    read(string("Eat"));          // 隐式调用 case2
+    Book book = string("Sleep");  // 隐式调用 case1
 }
 ```
 
-这种转换只支持一步转换，不期望时可以通过 `explicit` 抑制。但要注意，抑制后就不能通过拷贝形式的初始化了
+`explicit` 可以抑制两种隐式调用。
 
 ```cpp
 explicit Book(string s) { ... }
