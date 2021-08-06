@@ -30,7 +30,7 @@ export function addCodeBlocksCSS() {
                 '
         );
         // inline code
-        addCssRule('.md-typeset p code, .md-typeset td code, .md-typeset blockquote code, .md-typeset div code, .md-typeset li code, .md-typeset summary code', 
+        addCssRule('.md-typeset p code, .md-typeset td code, .md-typeset blockquote code, .md-typeset div code, .md-typeset li code, .md-typeset summary code, .md-typeset dt code', 
                             'font-family: Consolas; ')
         // text shadow
         addCssRule('.generalcy', 'text-shadow:0 0 1.5px #ccc !important;')
@@ -58,7 +58,7 @@ export function addCodeBlocksCSS() {
                 '
         );
         // inline code
-        addCssRule('.md-typeset p code, .md-typeset td code, .md-typeset blockquote code, .md-typeset div code, .md-typeset li code, .md-typeset summary code', 
+        addCssRule('.md-typeset p code, .md-typeset td code, .md-typeset blockquote code, .md-typeset div code, .md-typeset li code, .md-typeset summary code, .md-typeset dt code', 
                     'font-family: Monaco-inside; font-size: 0.612rem;')
 
     }

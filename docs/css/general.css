@@ -226,3 +226,8 @@ blockquote.ktb blockquote {
 blockquote.ktb blockquote p,  blockquote.ktb blockquote ul {
     font-size: 0.69rem;
 }
+
+.generalcy dt {
+    font-size: var(--generalcy-font-size); /* 15px on win */
+    letter-spacing: var(--generalcy-letter-spacing);
+}
