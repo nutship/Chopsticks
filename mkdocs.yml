@@ -77,7 +77,6 @@ nav:
       - Basis:
         - compound type: _basis/_basis/compound_type.md
         - type: _basis/_basis/type.md
-        - smart pointer: _basis/_basis/smart_pointers.md
       # - 1. primitive types: _basis/primitive_type.md
       - Smart Pointers:
         - 1: _basis/_smart_pointers/ptr1.md

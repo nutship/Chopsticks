@@ -169,3 +169,85 @@ RAII (Resource Acquisition Is Initialization) 是 C++ 管理资源的方式: 把
 
 -   需要自定义删除器或花括号初始化
 -   ...
+
+### 4. `weak_ptr`
+
+??? hint "`weak_ptr` 支持的操作"
+
+    | op                     | description                                                                                       |
+    | ---------------------  | ------------------------------------------------------------------------------------------------- |
+    | `weak_ptr<T> wp(sp);`  | 和 `shared_ptr` 指向相同对象                                                                      |
+    | `wp = p`               | `p` 可以是 `shared_ptr` 或 `weak_ptr`                                                             |
+    | `wp.reset()`           | 将 `wp` 置为空                                                                                    |
+    | `wp.use_count()`       | 共享的 `shared_ptr` 数量                                                                          |
+    | `wp.expired()`         | 是否过期，即 `use_count == 1`                                                                     |
+    | `wp.lock()`            | 若 `expired` 为 true，返回一个空的 `shared_ptr`，<br> 否则返回指向 `wp` 的资源对象的 `shared_ptr` |
+    | `shared_ptr<T> sp(wp)` | 若 `wp` 悬空，会抛出 `std::bad_weak_ptr` 异常 |
+
+`weak_ptr` 的特性:
+
+-   和 `shared_ptr` 配套使用，且不增加引用计数
+-   在悬空 (dangle) 时可以知晓 (`wp.expired()`)
+
+`weak_ptr` 需要一个操作:
+
+-   当 `weak_ptr` 过期，返回一个空指针；否则返回引用的资源 (的 `share_ptr`)
+-   若按 `if !expired then 解引用` 实现会造成竞态条件 (`weak_ptr` 不支持解引用)，因此由 `lock()` 实现
+
+`weak_ptr` 的代价与 `shared_ptr` 相当，需要对控制块的引用，对 weak count 的加减涉及原子操作。
+
+??? hint "为什么需要 weak count"
+
+    `weak_ptr` 需要一个数据结构判断是否过期，因此 `shared_ptr` 的析构逻辑为: 当 `ref_count=0`，析构资源，此时 `wp` 已经无法转换为 `sp`，然后当 `weak_count` 也为 0，再析构控制块
+
+`weak_ptr` 潜在的使用场景包括 缓存、观察者列表、打破 `shared_ptr` 的环状结构
+
+#### (1). 缓存
+
+考虑一个 naive 的工厂函数，返回一个只读对象的智能指针
+
+```cpp
+std::unique_ptr<const Widget> loadWidget(WidgetID id);
+```
+
+场景:
+
+-   `loadWidget` 是一个昂贵的操作 (需要操作文件或数据库 I/O)，且使用重复的 `id` 很常见
+    -   引入缓存，则 `cache` 和调用者都需要 `Widget` 的指针，不能用 `unique_ptr`
+-   调用者决定 `Widget` 的生存期：当没有 caller 使用 `Widget` 后，`Widget` 应该被销毁
+    -   使用 `shared_ptr` 由于 `cache` 必须保存一份，无法实现没有 caller 使用就被销毁
+-   `cache` 的指针需要判断，如果缓存的资源已经空悬就重新缓存
+    -   裸指针做不到
+
+??? hint "a quick-and-dirty implementation"
+
+    ```cpp
+    std::shared_ptr<const Widget> fastLoadWidget(WidgetID id) {
+        static std::unordered_map<WidgetID, std::weak_ptr<const Widget>> cache;
+        auto objPtr = cache[id].lock();
+        if (!objPtr) {
+            objPtr = loadWidget(id); // unique_ptr -> shared_ptr
+            cache[id] = objPtr;      // shared_ptr -> weak_ptr
+        }
+        return objPtr;
+    }
+    ```
+
+#### (2). Observer Design Pattern
+
+`subject` 和 `observers` 存在一对多的关系，一旦 `subject` 做出改变，依赖它的 `observers` 需要改变状态，因此 `subject` 通常维护一个 `observerList`。
+
+-   尽管 `observers` 是 `subject` 的成员，这是一个典型的 「无所有权」的例子，观察者和主题之间各有各的 lifespan
+-   `subject` 仅需要知道保存的 `observer` 是否已经悬空，因此此处适用 `weak_ptr`
+
+#### (3). `shared_ptr` 的循环引用
+
+<img src="./img/shared_ptr_circular_ref.png" width=540>
+
+假设 `A` 和 `C` 共享 `B` 的所有权；且 `B` 指向 `A` 的指针也很有用，应该使用哪种指针:
+
+-   原始指针: &ensp; 若 `A` 先被销毁，`C` 继续指向 `B`，且 `B` 无法判定指针是否悬空
+-   `shared_ptr`: &ensp; 造成循环引用，`C` 被销毁后，`A` 和 `B` 都被泄露
+-   `weak_ptr`: &ensp; 不会造成循环引用，也可以判定悬空
+
+使用 `weak_ptr` 打破 `shared_ptr` 的循环也并不常用。以严格分层的数据结构为例，子结点只被父结点持有，父对子的引用可用 `unique_ptr` 实现，而由于子的生存期一定短于父结点，子结点不可能解引用悬挂的父指针，因此可用原始指针实现。
