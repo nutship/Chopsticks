@@ -70,6 +70,12 @@ markdown_extensions:
 plugins:
   - search
 
+variables:
+  - containers:
+    - container_path: &container _basis/_containers/
+    - api_path: &container_api_path _basis/_containers/_apis/
+  - basis: &basis _basis/_basis/
+
 nav:
   - home: index.md
   - Basis⏳:
@@ -77,7 +83,12 @@ nav:
       - Basis:
         - compound type: _basis/_basis/compound_type.md
         - type: _basis/_basis/type.md
+        - list inilization: !!python/object/apply:os.path.join [*basis, list_init.md]
       # - 1. primitive types: _basis/primitive_type.md
+      - Containers:
+        - 1. sequential container: !!python/object/apply:os.path.join [*container, sequence.md]
+        - apis:
+            - seq api: !!python/object/apply:os.path.join [*container_api_path, seq_api.md]
       - Smart Pointers:
         - 1: _basis/_smart_pointers/ptr1.md
       - OOP:
