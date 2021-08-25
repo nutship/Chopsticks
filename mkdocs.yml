@@ -76,6 +76,8 @@ variables:
     - api_path: &container_api_path _basis/_containers/_apis/
   - basis: &basis _basis/_basis/
   - miscellaneous: &misc _basis/_misc/
+  - copy control: &copyctrl _basis/_copy_control/
+  - oop: &oop _basis/_oop/
 
 nav:
   - home: index.md
@@ -93,7 +95,9 @@ nav:
       - Smart Pointers:
         - 1: _basis/_smart_pointers/ptr1.md
       - Copy Control:
-        - constructor: _basis/_oop/constructor.md
-        - copy control: _basis/_oop/copy_control1.md 
+        - constructor: _basis/_copy_control/constructor.md
+        - copy control: _basis/_copy_control/copy_control1.md 
+      - OOP:
+        - ?: !!python/object/apply:os.path.join [*oop, a.md]
       - MISC:
         - copy elision &#58; rvo/nrvo: !!python/object/apply:os.path.join [*misc, rvo_nrvo.md]
