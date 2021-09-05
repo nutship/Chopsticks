@@ -3,6 +3,7 @@ import {renderImagleBlocks, renderFloatCodeBlocks, renderTables, renderLists} fr
 import {addCodeBlocksCSS} from './functions/add_code_css.js'
 import {addCyTags} from './functions/font.js'
 import {addBlockquoteClass} from './functions/add_blockquote_class.js'
+import { replaceElementByNewTag } from './utils/block.js'
 
 
 // cover class name on md content
@@ -41,6 +42,19 @@ for (let i = 0; i < fontBlocks.length; ++i) {
             mLeft = funcParams[1];
         renderFloatCodeBlocks(fontBlocks[i], ['c%wcode', 'l',  'a%0%0', 'b%' + mLeft + '&0']);
     }
+}
+
+/* add waveline tag */
+let htmlWaveBlocks = topBlock.getElementsByTagName('wave');
+let waveBlocks = [];
+for (let i = 0; i < htmlWaveBlocks.length; ++i) {
+    waveBlocks.push(htmlWaveBlocks[i]);
+    console.log(htmlWaveBlocks[i].childNodes)
+}
+
+for (let i = 0; i < waveBlocks.length; ++i) {
+    var newWaveTag = replaceElementByNewTag(waveBlocks[i], "u");
+    newWaveTag.className = "waveLine";
 }
 
 /* add <p> tags */

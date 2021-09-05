@@ -231,3 +231,7 @@ blockquote.ktb blockquote p,  blockquote.ktb blockquote ul {
     font-size: var(--generalcy-font-size); /* 15px on win */
     letter-spacing: var(--generalcy-letter-spacing);
 }
+
+.generalcy u.waveLine {
+    text-decoration-style: wavy;
+}
