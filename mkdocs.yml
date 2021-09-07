@@ -95,8 +95,9 @@ nav:
       - Smart Pointers:
         - 1: _basis/_smart_pointers/ptr1.md
       - Copy Control:
-        - constructor: _basis/_copy_control/constructor.md
-        - copy control: _basis/_copy_control/copy_control1.md 
+        - constructors: _basis/_copy_control/constructor.md
+        - copy and destruct: _basis/_copy_control/copy_control1.md 
+        - move: !!python/object/apply:os.path.join [*copyctrl, move.md]
       - OOP:
         - ?: !!python/object/apply:os.path.join [*oop, a.md]
       - MISC:
