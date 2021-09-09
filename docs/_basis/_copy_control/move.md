@@ -40,4 +40,104 @@ C++ 的表达式有两个维度的属性
 
     `rref`: &ensp;类型是右值引用，值类别是左值，绑定到一个右值 `1`
 
-### 2. 移动语义
+### 2. 移动
+
+#### (1). 移动构造函数、移动赋值运算符
+
+编写移动 ctor 时，需要考虑:
+
+-   假设移后源对象会被析构，更改其指针，防止当前对象被影响
+-   加 `noexcept`
+-   移动赋值运算符需要考虑自赋值
+
+```cpp
+Book(Book &&book) noexcept : rsc(book.rsc) {
+    book.rsc = nullptr;
+}
+
+Book& operator(Book &&book) noexcept {
+    if (this != &book) { ... }
+    return *this;
+}
+```
+
+#### (2). 移动成员与 `noexcept`
+
+考虑 `vector` 的 reallocate 过程，如果扩容时出现异常:
+
+-   申请空间时出现异常，`vector` 保持原有状态，异常交由上层用户处理
+-   copy 元素时出现异常，析构已经被 copy 的元素，`vector` 恢复为原有状态，异常交由用户
+
+而 move 时已被 move 的对象会被破坏，此时抛出异常无法恢复 vector 的状态，程序理应终止，因此标准规定: 只有对象的移动成员声明了 `noexcept`，`vector` 在 reallocate 时才会调用对象的移动成员，如果抛出异常根据 `noexcept` 会调用 `std::terminate()`
+
+### 3. 移动语义场景
+
+移动语义的语法基础即是 移动 ctor、移动赋值运算符和右值引用参数的函数的绑定机制，带来的好处是革命性的
+
+#### 对象接收右值
+
+```cpp
+vector<string> str_split(const string& s);
+
+vector<string> v1 = str_split("1,2,3");
+vector<string> v2;
+v2 = str_split("1,2,3");
+```
+
+最直接地，传给对象右值，可以优化效率
+
+#### 对象存入容器
+
+```cpp
+void push_back(const T& value);
+void push_back(T&& value);
+```
+
+容器是值语义的，而移动语义可以优化右值存入容器
+
+#### `unique_ptr` 放入容器
+
+`unique_ptr` 不允许复制，使得它无法放入 `vector` 中，且需要移动所有权
+
+-   `auto_ptr` 用拷贝 ctor 实现移动语义，这是它的失败之处: (1). 平时需要移动时只能调用拷贝函数，看起来疑惑 (2). 存入容器后，对容器排序会造成错误
+
+而通过移动语义，`unique_ptr` 可以放在容器中，需要复制时就调用 `unique_ptr` 的移动操作
+
+#### 按值传参
+
+```cpp
+class People {
+public:
+    People(string name) : name_(move(name)) { }
+    string name_;
+};
+People a("Alice"); // move ctor of "string name"
+string bn = "Bob";
+People b = bn; // copy ctor of "string name"
+```
+
+传参时语义上会有一次拷贝，而将其改为移动
+
+-   提高效率
+-   `shared_ptr` 作为实参并不少见，`shared_ptr` 的拷贝需要考虑线程安全且浪费，显然移动更轻便合适
+
+#### 按值返回
+
+```cpp
+vector<string> str_split(const string& s) {
+    vector<string> v;
+    ...
+    return v;
+}
+```
+
+`v` 是栈上左值对象，标准要求优先调用移动 ctor，然后再考虑拷贝 ctor. 其好处在于:
+
+-   效率问题，同上
+-   工厂函数常常需要返回 `unique_ptr`，而 `unique_ptr` 不支持拷贝
+
+```cpp
+unique_ptr<SomeObj> create_obj(...) {
+    return unique_ptr<SomeObj>(new SomeObj(...));
+}
+```
