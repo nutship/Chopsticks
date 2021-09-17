@@ -1,45 +1,52 @@
-### 1. RAII 与智能指针
+### 1. RAII (Resource Acquisition Is Initialization)
 
-RAII (Resource Acquisition Is Initialization) 是 C++ 管理资源的方式: 把资源封装在类中，对象生存期结束后自动析构:
+#### (1). 自动析构
+
+RAII 是 C++ 管理资源的方式: 利用对象生存期结束调用 dtor 的特性，把资源封装在类中
 
 -   栈对象离开作用域即结束生存期
 -   堆对象被释放后结束生存期
 
-这样做的好处在于 (按重要性先后排序):
+这样类使用者获得了自动 gc。把资源封装在 RAII 管理类中 的好处举例
 
--   明确资源的所有权
--   避免忘记资源的释放 (如 `delete` 指针)
--   处理异常等
+<!-- prettier-ignore-start -->
 
-??? hint "example of RAII"
+> 把锁封装在 RAII 管理类中
+```cpp
+void bad() {
+    m.lock();         // 请求互斥体
+    f();              // 若 f() 抛异常，互斥体永不释放
+    if (...) return;  // 提前返回，互斥体永不释放
+    m.unlock;
+}
+```
+>
+> 将互斥体封装在 class 中，生存期结束后自动释放
+>
+```cpp
+void good() {
+    std::lock_guard<std::mutex> lock(m);
+    f();
+    if (...) return;
+}
+```
 
-    ```cpp
-    void bad() {
-        m.lock();         // 请求互斥体
-        f();              // 若 f() 抛异常，互斥体永不释放
-        if (...) return;  // 提前返回，互斥体永不释放
-        m.unlock;
-    }
-    ```
+<!-- prettier-ignore-end -->
 
-    将互斥体封装在 class 中，生存期结束后自动释放
+#### (2). 使用 RAII 类的准则
 
-    ```cpp
-    void good() {
-        std::lock_guard<std::mutex> lock(m);
-        f();
-        if (...) return;
-    }
-    ```
+判断如何使用 RAII 类，需考虑所有权 (ownership):
 
-??? hint "所有权"
+-   创建 A 需要创建 B，析构 A 也需要析构 B，则 A 独占 B
+-   创建 A 需要增加对 B 的引用，析构 A 删除这个引用，则 B 被 A 共享
+-   创建 A 和析构 A 对 B 没影响，无所有权语义
 
-    所有权 (ownership): 对象 A 负责对象 B 的创造和释放等，就说 A owns B
+智能指针是管理内存资源的 RAII 类，以其为例:
 
-指针通常与动态内存关联，因而也需要作为一种资源由 RAII 管理。关于使用智能指针和裸指针的时机:
-
--   当有所有权的语义，即指针需要作为资源被管理，使用智能指针
--   没有所有权语义，只是用裸指针访问资源，裸指针结束生存期后也不需要它释放资源 (例如只是用裸指针访问一些数据)
+-   有所有权的语义，即指针需要作为资源被管理，使用智能指针
+    -   独占所有权，`unique_ptr`
+    -   共享所有权, `shared_ptr`
+-   无所有权语义，只是用裸指针访问资源: 访问时保证资源存在，生存期结束后也不需要它释放资源
 
 ### 2. `unique_ptr`
 

@@ -68,6 +68,8 @@ explicit Book(string s) { ... }
 -   单参数 `const char*` 的 `string`，不是 explicit 的
 -   单容量参数的 `vector`，是 explicit 的
 
+编写单参构造函数时，需要考虑是否有拷贝的语义
+
 ### 4. 委托构造函数
 
 把自己的一部分职责委托给其他构造函数。

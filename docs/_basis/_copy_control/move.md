@@ -24,7 +24,7 @@ C++ 的表达式有两个维度的属性
 
 &emsp; <img src="../img/value_category.png" width=520>
 
-这样分类是为了引用的绑: 让 xvalue & prvalue 在函数重载中优先绑定右值引用，其次寻找常左值引用，从而正确发挥移动语义的作用
+这样分类是为了引用的绑定: 让 xvalue & prvalue 在函数重载中优先绑定右值引用，其次寻找常左值引用，从而正确发挥移动语义的作用
 
 ??? caution "右值引用的绑定"
 
@@ -74,7 +74,7 @@ Book& operator(Book &&book) noexcept {
 
 移动语义的语法基础即是 移动 ctor、移动赋值运算符和右值引用参数的函数的绑定机制，带来的好处是革命性的
 
-#### 对象接收右值
+#### 对象 = 对象
 
 ```cpp
 vector<string> str_split(const string& s);
@@ -84,7 +84,13 @@ vector<string> v2;
 v2 = str_split("1,2,3");
 ```
 
-最直接地，传给对象右值，可以优化效率
+这是移动语义带来的最直接的好处:
+
+-   prvalue 本身具有移动语义，可以直接优化
+-   xvalue 代表被认定具有移动语义的 glvalue，也优先绑定匹配右值引用
+-   lvalue 照常
+
+上面的例子中，`vector` 默默做了移动的优化，优雅
 
 #### 对象存入容器
 
@@ -94,6 +100,10 @@ void push_back(T&& value);
 ```
 
 容器是值语义的，而移动语义可以优化右值存入容器
+
+#### `vector` 的 reallocate
+
+前面提到过，移动成员若声明了 `noexcept`，`vector` 在 reallocate 时会调用它们
 
 #### `unique_ptr` 放入容器
 
