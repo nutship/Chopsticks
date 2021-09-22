@@ -1,0 +1,1113 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../../assets/t.svg">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-6.1.3">
+    
+    
+      
+        
+            <title>move - Chopsticks</title>
+        
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2cb7adb3.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.f0267088.min.css">
+        
+      
+    
+    
+    
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../css/general.css">
+    
+      <link rel="stylesheet" href="../../../css/fonts.css">
+    
+      <link rel="stylesheet" href="../../../css/code-admonition.css">
+    
+      <link rel="stylesheet" href="../../../css/katex.css">
+    
+      <link rel="stylesheet" href="../../../css/tables.css">
+    
+      <link rel="stylesheet" href="../../../css/extra/admonitions.css">
+    
+      <link rel="stylesheet" href="../../../css/extra/code-blocks.css">
+    
+      <link rel="stylesheet" href="../../../css/gadgets/book.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="rubble" data-md-color-primary="" data-md-color-accent="">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../../.." title="Chopsticks" class="md-header-nav__button md-logo" aria-label="Chopsticks">
+      
+  
+  
+  
+  
+  <svg height="512pt" viewBox="-42 0 512 512.00047" width="512pt" xmlns="http://www.w3.org/2000/svg"><path d="m428.433594 336.667969c0 31.625-21.464844 58.988281-52.191406 66.519531l-6.988282 1.710938-92.5625 22.703124c-8.386718 2.09375-17.074218-3.03125-19.183594-11.621093-2.082031-8.511719 3.121094-17.097657 11.632813-19.179688l99.550781-24.414062c.191406-.042969.382813-.097657.5625-.148438 16.195313-4.242187 27.457032-18.78125 27.457032-35.570312 0-17.054688-11.671876-31.445313-27.457032-35.582031-2.984375-.792969-6.101562-1.203126-9.328125-1.203126h-87.011719c-8.765624 0-15.859374-7.097656-15.859374-15.863281 0-8.753906 7.09375-15.859375 15.859374-15.859375h87.011719c3.160157 0 6.28125.210938 9.328125.632813 33.378906 4.558593 59.179688 33.257812 59.179688 67.875zm0 0" fill="#aed0ff"/><path d="m428.433594 336.667969c0 31.625-21.464844 58.988281-52.191406 66.519531l-6.988282 1.710938v-32.660157c16.195313-4.242187 27.457032-18.78125 27.457032-35.570312 0-17.054688-11.671876-31.445313-27.457032-35.582031v-32.292969c33.378906 4.558593 59.179688 33.257812 59.179688 67.875zm0 0" fill="#8cbcff"/><path d="m340.4375 250.957031-26.125 141.433594c-6.378906 56.769531-52.046875 99.539063-106.277344 99.539063-54.234375 0-99.902344-42.769532-106.277344-99.539063l-26.125-141.433594c-1.195312-6.492187 3.792969-12.488281 10.402344-12.488281h244c6.605469 0 11.597656 5.996094 10.402344 12.488281zm0 0" fill="#4895ff"/><path d="m340.4375 250.957031-26.125 141.433594c-6.378906 56.769531-52.046875 99.539063-106.277344 99.539063v-253.460938h122c6.605469 0 11.597656 5.996094 10.402344 12.488281zm0 0" fill="#2682ff"/><path d="m414.71875 456.371094-22.523438 25.242187c-16.957031 19.011719-45.179687 30.386719-75.367187 30.386719h-217.585937c-30.1875 0-58.410157-11.375-75.378907-30.386719l-22.511719-25.242187c-3.035156-3.402344-.625-8.808594 3.941407-8.808594h405.480469c4.570312 0 6.980468 5.40625 3.945312 8.808594zm0 0" fill="#aed0ff"/><path d="m414.71875 456.371094-22.523438 25.242187c-16.957031 19.011719-45.179687 30.386719-75.367187 30.386719h-108.792969v-64.4375h202.738282c4.570312 0 6.980468 5.40625 3.945312 8.808594zm0 0" fill="#8cbcff"/><path d="m208.988281 5.949219c-5.476562-6.839844-15.457031-7.945313-22.292969-2.46875-6.839843 5.476562-7.945312 15.457031-2.46875 22.292969 9.050782 11.308593 14.363282 33.84375-13.332031 51.4375-27.335937 17.371093-37.539062 52.558593-23.726562 81.855468l15.597656 33.089844c3.734375 7.917969 13.183594 11.316406 21.109375 7.582031s11.320312-13.1875 7.582031-21.109375l-15.597656-33.089844c-7.011719-14.871093-1.832031-32.734374 12.046875-41.550781 42.335938-26.898437 42.855469-70.839843 21.082031-98.039062zm0 0" fill="#ff5e93"/><path d="m284.28125 73.152344c5.230469-7.027344 3.773438-16.964844-3.253906-22.195313-7.027344-5.226562-16.964844-3.769531-22.191406 3.257813l-19.492188 26.195312c-11.4375 15.375-12.453125 35.921875-2.582031 52.34375 4.304687 7.164063 5.253906 13.992188-.289063 20.289063l-11.710937 13.296875c-5.789063 6.574218-5.152344 16.597656 1.421875 22.386718 6.574218 5.785157 16.597656 5.148438 22.386718-1.421874l11.707032-13.296876c12.984375-14.742187 16.566406-36.136718 3.675781-57.59375-3.21875-5.355468-2.886719-12.054687.839844-17.066406zm0 0" fill="#ff3c7d"/></svg>
+
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Chopsticks
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              move
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../../.." class="md-tabs__link">
+        home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../" class="md-tabs__link md-tabs__link--active">
+          Basis⏳
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+
+  
+  
+   
+  
+  
+  <script>
+  document.getElementsByClassName('md-header')[0].style.setProperty('--md-primary-fg-color', '#393333');
+  var tabs1 = document.getElementsByClassName('md-tabs')[0]; if(tabs1) tabs1.style.setProperty('--md-primary-fg-color', '#393333');
+  // 'md-default-color'
+  // var tabs2 = document.getElementsByClassName('md-nav__title'); 
+  // if (tabs2)
+  //   for (var i = 0; i < tabs2.length; ++i)
+  //     tabs2[i].style.setProperty('--md-primary-fg-color', '#393333');
+  </script>
+
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Chopsticks" class="md-nav__button md-logo" aria-label="Chopsticks">
+      
+  
+  
+  
+  
+  <svg height="512pt" viewBox="-42 0 512 512.00047" width="512pt" xmlns="http://www.w3.org/2000/svg"><path d="m428.433594 336.667969c0 31.625-21.464844 58.988281-52.191406 66.519531l-6.988282 1.710938-92.5625 22.703124c-8.386718 2.09375-17.074218-3.03125-19.183594-11.621093-2.082031-8.511719 3.121094-17.097657 11.632813-19.179688l99.550781-24.414062c.191406-.042969.382813-.097657.5625-.148438 16.195313-4.242187 27.457032-18.78125 27.457032-35.570312 0-17.054688-11.671876-31.445313-27.457032-35.582031-2.984375-.792969-6.101562-1.203126-9.328125-1.203126h-87.011719c-8.765624 0-15.859374-7.097656-15.859374-15.863281 0-8.753906 7.09375-15.859375 15.859374-15.859375h87.011719c3.160157 0 6.28125.210938 9.328125.632813 33.378906 4.558593 59.179688 33.257812 59.179688 67.875zm0 0" fill="#aed0ff"/><path d="m428.433594 336.667969c0 31.625-21.464844 58.988281-52.191406 66.519531l-6.988282 1.710938v-32.660157c16.195313-4.242187 27.457032-18.78125 27.457032-35.570312 0-17.054688-11.671876-31.445313-27.457032-35.582031v-32.292969c33.378906 4.558593 59.179688 33.257812 59.179688 67.875zm0 0" fill="#8cbcff"/><path d="m340.4375 250.957031-26.125 141.433594c-6.378906 56.769531-52.046875 99.539063-106.277344 99.539063-54.234375 0-99.902344-42.769532-106.277344-99.539063l-26.125-141.433594c-1.195312-6.492187 3.792969-12.488281 10.402344-12.488281h244c6.605469 0 11.597656 5.996094 10.402344 12.488281zm0 0" fill="#4895ff"/><path d="m340.4375 250.957031-26.125 141.433594c-6.378906 56.769531-52.046875 99.539063-106.277344 99.539063v-253.460938h122c6.605469 0 11.597656 5.996094 10.402344 12.488281zm0 0" fill="#2682ff"/><path d="m414.71875 456.371094-22.523438 25.242187c-16.957031 19.011719-45.179687 30.386719-75.367187 30.386719h-217.585937c-30.1875 0-58.410157-11.375-75.378907-30.386719l-22.511719-25.242187c-3.035156-3.402344-.625-8.808594 3.941407-8.808594h405.480469c4.570312 0 6.980468 5.40625 3.945312 8.808594zm0 0" fill="#aed0ff"/><path d="m414.71875 456.371094-22.523438 25.242187c-16.957031 19.011719-45.179687 30.386719-75.367187 30.386719h-108.792969v-64.4375h202.738282c4.570312 0 6.980468 5.40625 3.945312 8.808594zm0 0" fill="#8cbcff"/><path d="m208.988281 5.949219c-5.476562-6.839844-15.457031-7.945313-22.292969-2.46875-6.839843 5.476562-7.945312 15.457031-2.46875 22.292969 9.050782 11.308593 14.363282 33.84375-13.332031 51.4375-27.335937 17.371093-37.539062 52.558593-23.726562 81.855468l15.597656 33.089844c3.734375 7.917969 13.183594 11.316406 21.109375 7.582031s11.320312-13.1875 7.582031-21.109375l-15.597656-33.089844c-7.011719-14.871093-1.832031-32.734374 12.046875-41.550781 42.335938-26.898437 42.855469-70.839843 21.082031-98.039062zm0 0" fill="#ff5e93"/><path d="m284.28125 73.152344c5.230469-7.027344 3.773438-16.964844-3.253906-22.195313-7.027344-5.226562-16.964844-3.769531-22.191406 3.257813l-19.492188 26.195312c-11.4375 15.375-12.453125 35.921875-2.582031 52.34375 4.304687 7.164063 5.253906 13.992188-.289063 20.289063l-11.710937 13.296875c-5.789063 6.574218-5.152344 16.597656 1.421875 22.386718 6.574218 5.785157 16.597656 5.148438 22.386718-1.421874l11.707032-13.296876c12.984375-14.742187 16.566406-36.136718 3.675781-57.59375-3.21875-5.355468-2.886719-12.054687.839844-17.066406zm0 0" fill="#ff3c7d"/></svg>
+
+
+    </a>
+    Chopsticks
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../.." class="md-nav__link">
+        home
+        </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      
+      
+        <a>Basis⏳</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Basis⏳" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Basis⏳ <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../" class="md-nav__link">
+        Preface
+        </a>
+    </li>
+  
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      
+      
+        <a>Basis</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Basis" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        <span class="md-nav__icon md-icon"></span>
+        Basis <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_basis/compound_type/" class="md-nav__link">
+        compound type
+        </a>
+    </li>
+  
+
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_basis/type/" class="md-nav__link">
+        type
+        </a>
+    </li>
+  
+
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_basis/list_init/" class="md-nav__link">
+        list inilization
+        </a>
+    </li>
+  
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      
+      
+        <a>Containers</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Containers" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon"></span>
+        Containers <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_containers/sequence/" class="md-nav__link">
+        1. sequential container
+        </a>
+    </li>
+  
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3-2" type="checkbox" id="nav-2-3-2">
+    
+    <label class="md-nav__link" for="nav-2-3-2">
+      
+      
+        <a>apis</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="apis" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-3-2">
+        <span class="md-nav__icon md-icon"></span>
+        apis <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_containers/_apis/seq_api/" class="md-nav__link">
+        seq api
+        </a>
+    </li>
+  
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4">
+    
+    <label class="md-nav__link" for="nav-2-4">
+      
+      
+        <a>Smart Pointers</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Smart Pointers" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        <span class="md-nav__icon md-icon"></span>
+        Smart Pointers <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_smart_pointers/ptr1/" class="md-nav__link">
+        1
+        </a>
+    </li>
+  
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-5" type="checkbox" id="nav-2-5" checked>
+    
+    <label class="md-nav__link" for="nav-2-5">
+      
+      
+        <a>Copy Control</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Copy Control" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-5">
+        <span class="md-nav__icon md-icon"></span>
+        Copy Control <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../constructor/" class="md-nav__link">
+        constructors
+        </a>
+    </li>
+  
+
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../copy_control1/" class="md-nav__link">
+        copy and destruct
+        </a>
+    </li>
+  
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        move
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    
+        <a href="./" class="md-nav__link md-nav__link--active">
+        move
+        </a>
+    
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 值类别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 移动
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 移动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    (1). 移动构造函数、移动赋值运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-noexcept" class="md-nav__link">
+    (2). 移动成员与 noexcept
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 移动语义场景
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 移动语义场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    对象 = 对象
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    对象存入容器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-reallocate" class="md-nav__link">
+    vector 的 reallocate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unique_ptr" class="md-nav__link">
+    unique_ptr 放入容器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    按值传参
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    按值返回
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-6" type="checkbox" id="nav-2-6">
+    
+    <label class="md-nav__link" for="nav-2-6">
+      
+      
+        <a>OOP</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="OOP" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-6">
+        <span class="md-nav__icon md-icon"></span>
+        OOP <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_oop/a/" class="md-nav__link">
+        ?
+        </a>
+    </li>
+  
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-7" type="checkbox" id="nav-2-7">
+    
+    <label class="md-nav__link" for="nav-2-7">
+      
+      
+        <a>MISC</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="MISC" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-7">
+        <span class="md-nav__icon md-icon"></span>
+        MISC <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_misc/rvo_nrvo/" class="md-nav__link">
+        copy elision &#58; rvo/nrvo
+        </a>
+    </li>
+  
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 值类别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 移动
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 移动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    (1). 移动构造函数、移动赋值运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-noexcept" class="md-nav__link">
+    (2). 移动成员与 noexcept
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 移动语义场景
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 移动语义场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    对象 = 对象
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    对象存入容器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-reallocate" class="md-nav__link">
+    vector 的 reallocate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unique_ptr" class="md-nav__link">
+    unique_ptr 放入容器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    按值传参
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    按值返回
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                    <h1>move</h1>
+                  
+                
+                <h3 id="1">1. 值类别<a class="headerlink" href="#1" title="Permanent link">⏳</a></h3>
+<p>C++ 的表达式有两个维度的属性</p>
+<ul>
+<li>类型 (type): &ensp; 如 <code>int</code> (普通类型) <code>int*</code>、<code>int&amp;</code>、<code>int&amp;&amp;</code> (复合类型)</li>
+<li>值类别 (value category): &ensp; 左值 (lvalue)、将亡值 (eXpiring, xvalue)、纯右值 (prvalue)</li>
+</ul>
+<p>值类别具体展开为</p>
+<ul>
+<li>左值: 可以取地址的具名变量<ul>
+<li>变量名，函数名，数据成员如 <code>std::cin</code> 等</li>
+<li><code>++i</code> 是左值，<code>i++</code> 是右值</li>
+</ul>
+</li>
+<li>亡值: 拥有身份且可以移动<ul>
+<li>返回对象为对象的右值引用的函数调用 (或重载运算符)，如 <code>std::move(x)</code></li>
+<li>转换为对象的右值引用的转型表达式，如 <code>static_cast(x)</code></li>
+</ul>
+</li>
+<li>纯右值<ul>
+<li>字面量，<code>this</code> 指针，lambda 表达式</li>
+<li>内建数值运算表达式，如 <code>a+b</code>，<code>a%b</code> 等</li>
+</ul>
+</li>
+</ul>
+<p>判断维度:</p>
+<ul>
+<li>拥有身份: &ensp; 通过某个名字判断表达式之间是否指代同一实体</li>
+<li>可被移动: &ensp; 右值引用类型的形参可以绑定于这个表达式</li>
+</ul>
+<p>&emsp; <img src="../img/value_category.png" width=520></p>
+<p>这样分类是为了引用的绑定: 让 xvalue &amp; prvalue 在函数重载中优先绑定右值引用，其次寻找常左值引用，从而正确发挥移动语义的作用</p>
+<details class="caution"><summary>右值引用的绑定</summary><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;lvalue&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;rvalue&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">rref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">foo</span><span class="p">(</span><span class="n">rref</span><span class="p">);</span><span class="w">    </span><span class="c1">// output: lvalue</span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p><code>rref</code>: &ensp;类型是右值引用，值类别是左值，绑定到一个右值 <code>1</code></p>
+</details>
+<h3 id="2">2. 移动<a class="headerlink" href="#2" title="Permanent link">⏳</a></h3>
+<h4 id="1_1">(1). 移动构造函数、移动赋值运算符<a class="headerlink" href="#1_1" title="Permanent link">⏳</a></h4>
+<p>编写移动 ctor 时，需要考虑:</p>
+<ul>
+<li>假设移后源对象会被析构，更改其指针，防止当前对象被影响</li>
+<li>加 <code>noexcept</code></li>
+<li>移动赋值运算符需要考虑自赋值</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">Book</span><span class="p">(</span><span class="n">Book</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">book</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">rsc</span><span class="p">(</span><span class="n">book</span><span class="p">.</span><span class="n">rsc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">book</span><span class="p">.</span><span class="n">rsc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">Book</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="p">(</span><span class="n">Book</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">book</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">book</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h4 id="2-noexcept">(2). 移动成员与 <code>noexcept</code><a class="headerlink" href="#2-noexcept" title="Permanent link">⏳</a></h4>
+<p>考虑 <code>vector</code> 的 reallocate 过程，如果扩容时出现异常:</p>
+<ul>
+<li>申请空间时出现异常，<code>vector</code> 保持原有状态，异常交由上层用户处理</li>
+<li>copy 元素时出现异常，析构已经被 copy 的元素，<code>vector</code> 恢复为原有状态，异常交由用户</li>
+</ul>
+<p>而 move 时已被 move 的对象会被破坏，此时抛出异常无法恢复 vector 的状态，程序理应终止，因此标准规定: 只有对象的移动成员声明了 <code>noexcept</code>，<code>vector</code> 在 reallocate 时才会调用对象的移动成员，如果抛出异常根据 <code>noexcept</code> 会调用 <code>std::terminate()</code></p>
+<h3 id="3">3. 移动语义场景<a class="headerlink" href="#3" title="Permanent link">⏳</a></h3>
+<p>移动语义的语法基础即是 移动 ctor、移动赋值运算符和右值引用参数的函数的绑定机制，带来的好处是革命性的</p>
+<h4 id="_1">对象 = 对象<a class="headerlink" href="#_1" title="Permanent link">⏳</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">str_split</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str_split</span><span class="p">(</span><span class="s">&quot;1,2,3&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v2</span><span class="p">;</span><span class="w"></span>
+<span class="n">v2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str_split</span><span class="p">(</span><span class="s">&quot;1,2,3&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>这是移动语义带来的最直接的好处:</p>
+<ul>
+<li>prvalue 本身具有移动语义，可以直接优化</li>
+<li>xvalue 代表被认定具有移动语义的 glvalue，也优先绑定匹配右值引用</li>
+<li>lvalue 照常</li>
+</ul>
+<p>上面的例子中，<code>vector</code> 默默做了移动的优化，优雅</p>
+<h4 id="_2">对象存入容器<a class="headerlink" href="#_2" title="Permanent link">⏳</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">push_back</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">push_back</span><span class="p">(</span><span class="n">T</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>容器是值语义的，而移动语义可以优化右值存入容器</p>
+<h4 id="vector-reallocate"><code>vector</code> 的 reallocate<a class="headerlink" href="#vector-reallocate" title="Permanent link">⏳</a></h4>
+<p>前面提到过，移动成员若声明了 <code>noexcept</code>，<code>vector</code> 在 reallocate 时会调用它们</p>
+<h4 id="unique_ptr"><code>unique_ptr</code> 放入容器<a class="headerlink" href="#unique_ptr" title="Permanent link">⏳</a></h4>
+<p><code>unique_ptr</code> 不允许复制，使得它无法放入 <code>vector</code> 中，且需要移动所有权</p>
+<ul>
+<li><code>auto_ptr</code> 用拷贝 ctor 实现移动语义，这是它的失败之处: (1). 平时需要移动时只能调用拷贝函数，看起来疑惑 (2). 存入容器后，对容器排序会造成错误</li>
+</ul>
+<p>而通过移动语义，<code>unique_ptr</code> 可以放在容器中，需要复制时就调用 <code>unique_ptr</code> 的移动操作</p>
+<h4 id="_3">按值传参<a class="headerlink" href="#_3" title="Permanent link">⏳</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">People</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">People</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">name_</span><span class="p">(</span><span class="n">move</span><span class="p">(</span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">name_</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="n">People</span><span class="w"> </span><span class="nf">a</span><span class="p">(</span><span class="s">&quot;Alice&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// move ctor of &quot;string name&quot;</span>
+<span class="n">string</span><span class="w"> </span><span class="n">bn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Bob&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="n">People</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bn</span><span class="p">;</span><span class="w"> </span><span class="c1">// copy ctor of &quot;string name&quot;</span>
+</code></pre></div>
+<p>传参时语义上会有一次拷贝，而将其改为移动</p>
+<ul>
+<li>提高效率</li>
+<li><code>shared_ptr</code> 作为实参并不少见，<code>shared_ptr</code> 的拷贝需要考虑线程安全且浪费，显然移动更轻便合适</li>
+</ul>
+<h4 id="_4">按值返回<a class="headerlink" href="#_4" title="Permanent link">⏳</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">str_split</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">v</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p><code>v</code> 是栈上左值对象，标准要求优先调用移动 ctor，然后再考虑拷贝 ctor. 其好处在于:</p>
+<ul>
+<li>效率问题，同上</li>
+<li>工厂函数常常需要返回 <code>unique_ptr</code>，而 <code>unique_ptr</code> 不支持拷贝</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">SomeObj</span><span class="o">&gt;</span><span class="w"> </span><span class="n">create_obj</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">SomeObj</span><span class="o">&gt;</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SomeObj</span><span class="p">(...));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../copy_control1/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                
+                    copy and destruct
+                
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../_oop/a/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                
+                    ?
+                
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        <!-- Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a> -->
+      </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.00f9b4e0.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: ['navigation.tabs', 'tabs.changeicon', 'toc.autohide', 'colors'],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script type="module" src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js"></script>
+      
+        <script type="module" src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script type="module" src="../../../js/mkmain.js"></script>
+      
+        <script type="module" src="../../../js/katex.js"></script>
+      
+    
+  </body>
+</html>

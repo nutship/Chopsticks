@@ -1,0 +1,1379 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../../assets/t.svg">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-6.1.3">
+    
+    
+      
+        
+            <title>1 - Chopsticks</title>
+        
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2cb7adb3.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.f0267088.min.css">
+        
+      
+    
+    
+    
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../css/general.css">
+    
+      <link rel="stylesheet" href="../../../css/fonts.css">
+    
+      <link rel="stylesheet" href="../../../css/code-admonition.css">
+    
+      <link rel="stylesheet" href="../../../css/katex.css">
+    
+      <link rel="stylesheet" href="../../../css/tables.css">
+    
+      <link rel="stylesheet" href="../../../css/extra/admonitions.css">
+    
+      <link rel="stylesheet" href="../../../css/extra/code-blocks.css">
+    
+      <link rel="stylesheet" href="../../../css/gadgets/book.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="rubble" data-md-color-primary="" data-md-color-accent="">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-raii-resource-acquisition-is-initialization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../../.." title="Chopsticks" class="md-header-nav__button md-logo" aria-label="Chopsticks">
+      
+  
+  
+  
+  
+  <svg height="512pt" viewBox="-42 0 512 512.00047" width="512pt" xmlns="http://www.w3.org/2000/svg"><path d="m428.433594 336.667969c0 31.625-21.464844 58.988281-52.191406 66.519531l-6.988282 1.710938-92.5625 22.703124c-8.386718 2.09375-17.074218-3.03125-19.183594-11.621093-2.082031-8.511719 3.121094-17.097657 11.632813-19.179688l99.550781-24.414062c.191406-.042969.382813-.097657.5625-.148438 16.195313-4.242187 27.457032-18.78125 27.457032-35.570312 0-17.054688-11.671876-31.445313-27.457032-35.582031-2.984375-.792969-6.101562-1.203126-9.328125-1.203126h-87.011719c-8.765624 0-15.859374-7.097656-15.859374-15.863281 0-8.753906 7.09375-15.859375 15.859374-15.859375h87.011719c3.160157 0 6.28125.210938 9.328125.632813 33.378906 4.558593 59.179688 33.257812 59.179688 67.875zm0 0" fill="#aed0ff"/><path d="m428.433594 336.667969c0 31.625-21.464844 58.988281-52.191406 66.519531l-6.988282 1.710938v-32.660157c16.195313-4.242187 27.457032-18.78125 27.457032-35.570312 0-17.054688-11.671876-31.445313-27.457032-35.582031v-32.292969c33.378906 4.558593 59.179688 33.257812 59.179688 67.875zm0 0" fill="#8cbcff"/><path d="m340.4375 250.957031-26.125 141.433594c-6.378906 56.769531-52.046875 99.539063-106.277344 99.539063-54.234375 0-99.902344-42.769532-106.277344-99.539063l-26.125-141.433594c-1.195312-6.492187 3.792969-12.488281 10.402344-12.488281h244c6.605469 0 11.597656 5.996094 10.402344 12.488281zm0 0" fill="#4895ff"/><path d="m340.4375 250.957031-26.125 141.433594c-6.378906 56.769531-52.046875 99.539063-106.277344 99.539063v-253.460938h122c6.605469 0 11.597656 5.996094 10.402344 12.488281zm0 0" fill="#2682ff"/><path d="m414.71875 456.371094-22.523438 25.242187c-16.957031 19.011719-45.179687 30.386719-75.367187 30.386719h-217.585937c-30.1875 0-58.410157-11.375-75.378907-30.386719l-22.511719-25.242187c-3.035156-3.402344-.625-8.808594 3.941407-8.808594h405.480469c4.570312 0 6.980468 5.40625 3.945312 8.808594zm0 0" fill="#aed0ff"/><path d="m414.71875 456.371094-22.523438 25.242187c-16.957031 19.011719-45.179687 30.386719-75.367187 30.386719h-108.792969v-64.4375h202.738282c4.570312 0 6.980468 5.40625 3.945312 8.808594zm0 0" fill="#8cbcff"/><path d="m208.988281 5.949219c-5.476562-6.839844-15.457031-7.945313-22.292969-2.46875-6.839843 5.476562-7.945312 15.457031-2.46875 22.292969 9.050782 11.308593 14.363282 33.84375-13.332031 51.4375-27.335937 17.371093-37.539062 52.558593-23.726562 81.855468l15.597656 33.089844c3.734375 7.917969 13.183594 11.316406 21.109375 7.582031s11.320312-13.1875 7.582031-21.109375l-15.597656-33.089844c-7.011719-14.871093-1.832031-32.734374 12.046875-41.550781 42.335938-26.898437 42.855469-70.839843 21.082031-98.039062zm0 0" fill="#ff5e93"/><path d="m284.28125 73.152344c5.230469-7.027344 3.773438-16.964844-3.253906-22.195313-7.027344-5.226562-16.964844-3.769531-22.191406 3.257813l-19.492188 26.195312c-11.4375 15.375-12.453125 35.921875-2.582031 52.34375 4.304687 7.164063 5.253906 13.992188-.289063 20.289063l-11.710937 13.296875c-5.789063 6.574218-5.152344 16.597656 1.421875 22.386718 6.574218 5.785157 16.597656 5.148438 22.386718-1.421874l11.707032-13.296876c12.984375-14.742187 16.566406-36.136718 3.675781-57.59375-3.21875-5.355468-2.886719-12.054687.839844-17.066406zm0 0" fill="#ff3c7d"/></svg>
+
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Chopsticks
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              1
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../../.." class="md-tabs__link">
+        home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../" class="md-tabs__link md-tabs__link--active">
+          Basis⏳
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+
+  
+  
+   
+  
+  
+  <script>
+  document.getElementsByClassName('md-header')[0].style.setProperty('--md-primary-fg-color', '#393333');
+  var tabs1 = document.getElementsByClassName('md-tabs')[0]; if(tabs1) tabs1.style.setProperty('--md-primary-fg-color', '#393333');
+  // 'md-default-color'
+  // var tabs2 = document.getElementsByClassName('md-nav__title'); 
+  // if (tabs2)
+  //   for (var i = 0; i < tabs2.length; ++i)
+  //     tabs2[i].style.setProperty('--md-primary-fg-color', '#393333');
+  </script>
+
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Chopsticks" class="md-nav__button md-logo" aria-label="Chopsticks">
+      
+  
+  
+  
+  
+  <svg height="512pt" viewBox="-42 0 512 512.00047" width="512pt" xmlns="http://www.w3.org/2000/svg"><path d="m428.433594 336.667969c0 31.625-21.464844 58.988281-52.191406 66.519531l-6.988282 1.710938-92.5625 22.703124c-8.386718 2.09375-17.074218-3.03125-19.183594-11.621093-2.082031-8.511719 3.121094-17.097657 11.632813-19.179688l99.550781-24.414062c.191406-.042969.382813-.097657.5625-.148438 16.195313-4.242187 27.457032-18.78125 27.457032-35.570312 0-17.054688-11.671876-31.445313-27.457032-35.582031-2.984375-.792969-6.101562-1.203126-9.328125-1.203126h-87.011719c-8.765624 0-15.859374-7.097656-15.859374-15.863281 0-8.753906 7.09375-15.859375 15.859374-15.859375h87.011719c3.160157 0 6.28125.210938 9.328125.632813 33.378906 4.558593 59.179688 33.257812 59.179688 67.875zm0 0" fill="#aed0ff"/><path d="m428.433594 336.667969c0 31.625-21.464844 58.988281-52.191406 66.519531l-6.988282 1.710938v-32.660157c16.195313-4.242187 27.457032-18.78125 27.457032-35.570312 0-17.054688-11.671876-31.445313-27.457032-35.582031v-32.292969c33.378906 4.558593 59.179688 33.257812 59.179688 67.875zm0 0" fill="#8cbcff"/><path d="m340.4375 250.957031-26.125 141.433594c-6.378906 56.769531-52.046875 99.539063-106.277344 99.539063-54.234375 0-99.902344-42.769532-106.277344-99.539063l-26.125-141.433594c-1.195312-6.492187 3.792969-12.488281 10.402344-12.488281h244c6.605469 0 11.597656 5.996094 10.402344 12.488281zm0 0" fill="#4895ff"/><path d="m340.4375 250.957031-26.125 141.433594c-6.378906 56.769531-52.046875 99.539063-106.277344 99.539063v-253.460938h122c6.605469 0 11.597656 5.996094 10.402344 12.488281zm0 0" fill="#2682ff"/><path d="m414.71875 456.371094-22.523438 25.242187c-16.957031 19.011719-45.179687 30.386719-75.367187 30.386719h-217.585937c-30.1875 0-58.410157-11.375-75.378907-30.386719l-22.511719-25.242187c-3.035156-3.402344-.625-8.808594 3.941407-8.808594h405.480469c4.570312 0 6.980468 5.40625 3.945312 8.808594zm0 0" fill="#aed0ff"/><path d="m414.71875 456.371094-22.523438 25.242187c-16.957031 19.011719-45.179687 30.386719-75.367187 30.386719h-108.792969v-64.4375h202.738282c4.570312 0 6.980468 5.40625 3.945312 8.808594zm0 0" fill="#8cbcff"/><path d="m208.988281 5.949219c-5.476562-6.839844-15.457031-7.945313-22.292969-2.46875-6.839843 5.476562-7.945312 15.457031-2.46875 22.292969 9.050782 11.308593 14.363282 33.84375-13.332031 51.4375-27.335937 17.371093-37.539062 52.558593-23.726562 81.855468l15.597656 33.089844c3.734375 7.917969 13.183594 11.316406 21.109375 7.582031s11.320312-13.1875 7.582031-21.109375l-15.597656-33.089844c-7.011719-14.871093-1.832031-32.734374 12.046875-41.550781 42.335938-26.898437 42.855469-70.839843 21.082031-98.039062zm0 0" fill="#ff5e93"/><path d="m284.28125 73.152344c5.230469-7.027344 3.773438-16.964844-3.253906-22.195313-7.027344-5.226562-16.964844-3.769531-22.191406 3.257813l-19.492188 26.195312c-11.4375 15.375-12.453125 35.921875-2.582031 52.34375 4.304687 7.164063 5.253906 13.992188-.289063 20.289063l-11.710937 13.296875c-5.789063 6.574218-5.152344 16.597656 1.421875 22.386718 6.574218 5.785157 16.597656 5.148438 22.386718-1.421874l11.707032-13.296876c12.984375-14.742187 16.566406-36.136718 3.675781-57.59375-3.21875-5.355468-2.886719-12.054687.839844-17.066406zm0 0" fill="#ff3c7d"/></svg>
+
+
+    </a>
+    Chopsticks
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../.." class="md-nav__link">
+        home
+        </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      
+      
+        <a>Basis⏳</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Basis⏳" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Basis⏳ <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../" class="md-nav__link">
+        Preface
+        </a>
+    </li>
+  
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      
+      
+        <a>Basis</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Basis" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        <span class="md-nav__icon md-icon"></span>
+        Basis <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_basis/compound_type/" class="md-nav__link">
+        compound type
+        </a>
+    </li>
+  
+
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_basis/type/" class="md-nav__link">
+        type
+        </a>
+    </li>
+  
+
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_basis/list_init/" class="md-nav__link">
+        list inilization
+        </a>
+    </li>
+  
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      
+      
+        <a>Containers</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Containers" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon"></span>
+        Containers <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_containers/sequence/" class="md-nav__link">
+        1. sequential container
+        </a>
+    </li>
+  
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3-2" type="checkbox" id="nav-2-3-2">
+    
+    <label class="md-nav__link" for="nav-2-3-2">
+      
+      
+        <a>apis</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="apis" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-3-2">
+        <span class="md-nav__icon md-icon"></span>
+        apis <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_containers/_apis/seq_api/" class="md-nav__link">
+        seq api
+        </a>
+    </li>
+  
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4" checked>
+    
+    <label class="md-nav__link" for="nav-2-4">
+      
+      
+        <a>Smart Pointers</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Smart Pointers" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        <span class="md-nav__icon md-icon"></span>
+        Smart Pointers <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        1
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    
+        <a href="./" class="md-nav__link md-nav__link--active">
+        1
+        </a>
+    
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-raii-resource-acquisition-is-initialization" class="md-nav__link">
+    1. RAII (Resource Acquisition Is Initialization)
+  </a>
+  
+    <nav class="md-nav" aria-label="1. RAII (Resource Acquisition Is Initialization)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    (1). 基本定义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    (2). 所有权
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-unique_ptr" class="md-nav__link">
+    2. unique_ptr
+  </a>
+  
+    <nav class="md-nav" aria-label="2. unique_ptr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    (1). 基本操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    (2). 移动语义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-vs-auto_ptr" class="md-nav__link">
+    (3). vs auto_ptr
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-shared_ptr" class="md-nav__link">
+    3. shared_ptr
+  </a>
+  
+    <nav class="md-nav" aria-label="3. shared_ptr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    (1). 初始化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-weak_ptr" class="md-nav__link">
+    4. weak_ptr
+  </a>
+  
+    <nav class="md-nav" aria-label="4. weak_ptr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    (1). 缓存
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-observer-design-pattern" class="md-nav__link">
+    (2). Observer Design Pattern
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-shared_ptr_1" class="md-nav__link">
+    (3). shared_ptr 的循环引用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-5" type="checkbox" id="nav-2-5">
+    
+    <label class="md-nav__link" for="nav-2-5">
+      
+      
+        <a>Copy Control</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Copy Control" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-5">
+        <span class="md-nav__icon md-icon"></span>
+        Copy Control <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_copy_control/constructor/" class="md-nav__link">
+        constructors
+        </a>
+    </li>
+  
+
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_copy_control/copy_control1/" class="md-nav__link">
+        copy and destruct
+        </a>
+    </li>
+  
+
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_copy_control/move/" class="md-nav__link">
+        move
+        </a>
+    </li>
+  
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-6" type="checkbox" id="nav-2-6">
+    
+    <label class="md-nav__link" for="nav-2-6">
+      
+      
+        <a>OOP</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="OOP" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-6">
+        <span class="md-nav__icon md-icon"></span>
+        OOP <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_oop/a/" class="md-nav__link">
+        ?
+        </a>
+    </li>
+  
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-7" type="checkbox" id="nav-2-7">
+    
+    <label class="md-nav__link" for="nav-2-7">
+      
+      
+        <a>MISC</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="MISC" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-7">
+        <span class="md-nav__icon md-icon"></span>
+        MISC <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_misc/rvo_nrvo/" class="md-nav__link">
+        copy elision &#58; rvo/nrvo
+        </a>
+    </li>
+  
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-raii-resource-acquisition-is-initialization" class="md-nav__link">
+    1. RAII (Resource Acquisition Is Initialization)
+  </a>
+  
+    <nav class="md-nav" aria-label="1. RAII (Resource Acquisition Is Initialization)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    (1). 基本定义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    (2). 所有权
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-unique_ptr" class="md-nav__link">
+    2. unique_ptr
+  </a>
+  
+    <nav class="md-nav" aria-label="2. unique_ptr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    (1). 基本操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    (2). 移动语义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-vs-auto_ptr" class="md-nav__link">
+    (3). vs auto_ptr
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-shared_ptr" class="md-nav__link">
+    3. shared_ptr
+  </a>
+  
+    <nav class="md-nav" aria-label="3. shared_ptr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    (1). 初始化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-weak_ptr" class="md-nav__link">
+    4. weak_ptr
+  </a>
+  
+    <nav class="md-nav" aria-label="4. weak_ptr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    (1). 缓存
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-observer-design-pattern" class="md-nav__link">
+    (2). Observer Design Pattern
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-shared_ptr_1" class="md-nav__link">
+    (3). shared_ptr 的循环引用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                    <h1>1</h1>
+                  
+                
+                <h3 id="1-raii-resource-acquisition-is-initialization">1. RAII (Resource Acquisition Is Initialization)<a class="headerlink" href="#1-raii-resource-acquisition-is-initialization" title="Permanent link">⏳</a></h3>
+<h4 id="1">(1). 基本定义<a class="headerlink" href="#1" title="Permanent link">⏳</a></h4>
+<p>RAII 是 C++ 管理资源的方式</p>
+<ul>
+<li>RAII 类在 ctor 中获取资源，在 dtor 中释放资源，并限制拷贝成员的行为</li>
+<li>对象生存期结束后调用 dtor</li>
+<li>栈对象离开作用域即结束生存期，堆对象被释放后结束生存期</li>
+</ul>
+<p>由此对象的生存期和资源的生存期一致。这样类使用者获得了自动 gc。自动 gc 的好处:</p>
+<!-- prettier-ignore-start -->
+
+<blockquote>
+<p>(1). 栈变量使用 RAII 类</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">bad</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">m</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span><span class="w">         </span><span class="c1">// 请求互斥体</span>
+<span class="w">    </span><span class="n">f</span><span class="p">();</span><span class="w">              </span><span class="c1">// 若 f() 抛异常，互斥体永不释放</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(...)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w">  </span><span class="c1">// 提前返回，互斥体永不释放</span>
+<span class="w">    </span><span class="n">m</span><span class="p">.</span><span class="n">unlock</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>将互斥体封装在 class 中，生存期结束后自动释放 </p>
+<p><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">good</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lock</span><span class="p">(</span><span class="n">m</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">f</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(...)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+(2). 成员变量使用 RAII 类</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Obj</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lock</span><span class="p">(</span><span class="n">m</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+对象析构前逆序执行成员的析构，对象的树结构自动地被有效析构</p>
+</blockquote>
+<!-- prettier-ignore-end -->
+
+<h4 id="2">(2). 所有权<a class="headerlink" href="#2" title="Permanent link">⏳</a></h4>
+<p>RAII 和 ownership 挂钩，广义的说，对象 A 负责资源 B 的创建和释放 $\Longrightarrow$ A owns B。以智能指针为例:</p>
+<ul>
+<li>独占所有权，<code>unique_ptr</code>: ctor 初始化，dtor 释放，move-only</li>
+<li>共享所有权, <code>shared_ptr</code>: ctor 和 dtor 根据引用计数的情况执行，拷贝增加引用计数，赋值增加一个减少一个，移动不变</li>
+<li>无所有权语义，只是用裸指针访问资源: 访问时保证资源存在，生存期结束后也不需要它释放资源</li>
+</ul>
+<h3 id="2-unique_ptr">2. <code>unique_ptr</code><a class="headerlink" href="#2-unique_ptr" title="Permanent link">⏳</a></h3>
+<h4 id="1_1">(1). 基本操作<a class="headerlink" href="#1_1" title="Permanent link">⏳</a></h4>
+<table>
+<thead>
+<tr>
+<th>op</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>unique_ptr&lt;T&gt; u</code><br> <code>unique_ptr&lt;T, D&gt; u</code></td>
+<td>空 <code>unique_ptr</code></td>
+</tr>
+<tr>
+<td><code>unique_ptr&lt;T&gt; u(new T)</code></td>
+<td>注意不能拷贝初始化</td>
+</tr>
+<tr>
+<td><code>u = nullptr</code></td>
+<td>释放 <code>u</code> 指向的对象，并将 <code>u</code> 置为空</td>
+</tr>
+<tr>
+<td><code>u.release()</code></td>
+<td><code>u</code> 放弃控制权: 返回指针，并置为空</td>
+</tr>
+<tr>
+<td><code>u.reset()</code> <br> <code>u.reset(q)</code> <br> <code>u.reset(nullptr)</code></td>
+<td>释放 <code>u</code> 指向的对象，并置为空，如果给了参数，<code>u</code> 指向给定对象</td>
+</tr>
+<tr>
+<td><code>u.get()</code></td>
+<td>返回 <code>u</code> 中保存的指针，应小心使用</td>
+</tr>
+<tr>
+<td>transfer ownership</td>
+<td>见下</td>
+</tr>
+<tr>
+<td>给空 <code>unique_ptr</code> 赋值</td>
+<td><code>u.reset(p)</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="2_1">(2). 移动语义<a class="headerlink" href="#2_1" title="Permanent link">⏳</a></h4>
+<details class="hint"><summary>transfer ownership</summary><p><code>unique_ptr</code> 关键的操作之一是转移指针所有权 (i.e. 移动语义)，实现方式</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1</span>
+<span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p1</span><span class="p">(</span><span class="n">p2</span><span class="p">.</span><span class="n">release</span><span class="p">());</span><span class="w"></span>
+<span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p3</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">));</span><span class="w"></span>
+<span class="n">p3</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="n">p4</span><span class="p">.</span><span class="n">release</span><span class="p">());</span><span class="w"></span>
+<span class="c1">// 2</span>
+<span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">p6</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>对比:</p>
+<ul>
+<li>方式 1: 可读性差，且不会移动 custom deleter</li>
+<li>方式 2: 完美</li>
+</ul>
+</details>
+<details class="hint"><summary>factory method</summary><div class="highlight"><pre><span></span><code><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">SomeObj</span><span class="o">&gt;</span><span class="w"> </span><span class="n">create_obj</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">SomeObj</span><span class="o">&gt;</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SomeObj</span><span class="p">(...));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>可以返回 <code>unique_ptr</code> 的原因: 栈上对象生存期结束，C++ 的 copy elision 机制会优先尝试移动，不行的话再尝试拷贝</p>
+</details>
+<h4 id="3-vs-auto_ptr">(3). vs <code>auto_ptr</code><a class="headerlink" href="#3-vs-auto_ptr" title="Permanent link">⏳</a></h4>
+<p><code>auto_ptr</code> 是旧 C++ 实现独占所有权的智能指针</p>
+<ul>
+<li><code>auto_ptr</code> 需要能存入容器，而容器是值语义的，<code>auto_ptr</code> 把赋值当移动使</li>
+<li>赋值使原指针变为 <code>null</code>，导致迷惑行为，例如无法排序</li>
+</ul>
+<p>// ToDo: an example of factory</p>
+<h3 id="3-shared_ptr">3. <code>shared_ptr</code><a class="headerlink" href="#3-shared_ptr" title="Permanent link">⏳</a></h3>
+<p>当某个指针不被某个特定的智能指针对象所有，具有「共享所有权」语义，就适用 <code>shared_ptr</code>。它需要更大的开销:</p>
+<ul>
+<li>初始化第一个 <code>shared_ptr</code> 时，同时还需要初始化一个 object 和一个控制块 (包含 ref count、weak count、custom deleter, etc.)</li>
+<li>每个 <code>shared_ptr</code> 需要包含对原对象的引用和对控制块的引用，约为裸指针的 2 倍空间</li>
+<li>递增递减引用是原子性的，比非原子操作慢</li>
+</ul>
+<p><code>shared_ptr</code> 用以上代价换取自动垃圾回收。</p>
+<details class="hint"><summary>对比 <code>shared_ptr</code> 和 <code>unique_ptr</code></summary><p>二者除本质区别外，使用上的区别:</p>
+<ul>
+<li><code>shared_ptr</code> 也支持自定义删除器，但不内嵌在类型信息中</li>
+<li><code>shared_ptr</code> 不支持数组</li>
+</ul>
+</details>
+<details class="hint"><summary><code>shared_ptr</code> 支持的操作</summary><table>
+<thead>
+<tr>
+<th>op</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>shared_ptr&lt;T&gt; sp;</code></td>
+<td>值初始化为一个空指针</td>
+</tr>
+<tr>
+<td><code>p</code>, <code>*p</code>, <code>p-&gt;mem</code></td>
+<td>可以像普通指针一样使用智能指针的变量名</td>
+</tr>
+<tr>
+<td><code>make_shared&lt;T&gt;(args)</code></td>
+<td>以 emplace 的方式初始化</td>
+</tr>
+<tr>
+<td><code>shared_ptr&lt;T&gt; p(q);</code></td>
+<td>拷贝初始化，递增 <code>q</code> 中的计数器</td>
+</tr>
+<tr>
+<td><code>p = q</code></td>
+<td>赋值，递减 <code>p</code> 的计数，递增 <code>q</code> 的计数</td>
+</tr>
+<tr>
+<td><code>swap(p, q)</code> / <code>p.swap(q)</code></td>
+<td>交换 <code>p</code> 和 <code>q</code> 的指针</td>
+</tr>
+<tr>
+<td><code>p.get()</code></td>
+<td>返回 <code>p</code> 中保存的原始类型指针，应小心使用</td>
+</tr>
+<tr>
+<td><code>p.use_count()</code></td>
+<td>返回 <code>p</code> 的计数，可能很慢，主要用于调试</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h4 id="1_2">(1). 初始化<a class="headerlink" href="#1_2" title="Permanent link">⏳</a></h4>
+<p><code>shared_ptr</code> 有两种初始化方式:</p>
+<ul>
+<li>通过 <code>make_shared</code> 以 emplace 的方式</li>
+<li>直接初始化，通过原始指针变量 (或 <code>unique_ptr</code>)</li>
+</ul>
+<p>首先应避免从原始指针上创建 <code>shared_ptr</code>，非此不可也要使用临时对象</p>
+<details class="caution"><summary>example</summary><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">(</span><span class="mi">1024</span><span class="p">));</span><span class="w"></span>
+<span class="n">process</span><span class="p">(</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">));</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>由于混用了原始指针和 <code>shared_ptr</code>，导致了 undefined</p>
+</details>
+<details class="caution"><summary><code>enabled_shared_from_this</code></summary><div class="highlight"><pre><span></span><code><span class="c1">// 用于跟踪已经处理过的 Widget 的数据结构:</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">processedWidgets</span><span class="p">;</span><span class="w"></span>
+<span class="c1">// Widget 类</span>
+<span class="k">class</span> <span class="nc">Widget</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">process</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="p">...</span><span class="w"></span>
+<span class="w">        </span><span class="n">processedWidgets</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// 错误: 相当于新开了一个 shared_ptr</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<p>需求: 在类内拿到一个 <code>this</code> 的 <code>shared_ptr</code>，且这个 <code>shared_ptr</code> 不是第一个</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Widget</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">enable_shared_from_this</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">process</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="p">...</span><span class="w"></span>
+<span class="w">        </span><span class="n">processedWidgets</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">shared_from_this</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+</details>
+<!-- prettier-ignore-start -->
+
+<p>而对比「使用 <code>make_shared</code> 初始化」和「使用 <code>new</code> 的临时对象直接初始化」也是前者更好，原因在于:</p>
+<dl>
+<dt>1 . 使用 <code>make_shared</code> 可以少打一次类型，减少重复代码</dt>
+<dd>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">spw1</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">());</span><span class="w">      </span><span class="c1">//使用make函数</span>
+<span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">spw2</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Widget</span><span class="p">);</span><span class="w">   </span><span class="c1">//不使用make函数</span>
+</code></pre></div>
+</dd>
+<dt>2 . 使用 <code>make_shared</code> 更加异常安全</dt>
+<dd>
+<div class="highlight"><pre><span></span><code><span class="n">processWidget</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Widget</span><span class="p">),</span><span class="w"> </span><span class="n">computePriority</span><span class="p">());</span><span class="w"> </span>
+</code></pre></div>
+<p>函数传参前必须先计算实参，而编译器在转换目标代码时不必按照顺序，可能产生 <code>new Widget</code> &gt; <code>computePriority</code> &gt; <code>shared_ptr ctor</code> 的顺序，<code>computePriority</code> 可能会抛出异常，导致 <code>new Widget</code> 泄漏</p>
+</dd>
+<dt>3 . 使用 <code>make_shared</code> 内存分配更少</dt>
+<dd>
+<p><code>std::shared_ptr&lt;Widget&gt; spw(new Widget);</code> new 对象一次分配，控制块又一次分配 <br>
+<code>auto spw = std::make_shared&lt;Widget&gt;();</code> 分配一块内存，同时容纳对象和控制块</p>
+</dd>
+</dl>
+<!-- prettier-ignore-end -->
+
+<p>需要考虑一些只能用直接初始化的特殊情况</p>
+<ul>
+<li>需要自定义删除器或花括号初始化</li>
+<li>...</li>
+</ul>
+<h3 id="4-weak_ptr">4. <code>weak_ptr</code><a class="headerlink" href="#4-weak_ptr" title="Permanent link">⏳</a></h3>
+<details class="hint"><summary><code>weak_ptr</code> 支持的操作</summary><table>
+<thead>
+<tr>
+<th>op</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>weak_ptr&lt;T&gt; wp(sp);</code></td>
+<td>和 <code>shared_ptr</code> 指向相同对象</td>
+</tr>
+<tr>
+<td><code>wp = p</code></td>
+<td><code>p</code> 可以是 <code>shared_ptr</code> 或 <code>weak_ptr</code></td>
+</tr>
+<tr>
+<td><code>wp.reset()</code></td>
+<td>将 <code>wp</code> 置为空</td>
+</tr>
+<tr>
+<td><code>wp.use_count()</code></td>
+<td>共享的 <code>shared_ptr</code> 数量</td>
+</tr>
+<tr>
+<td><code>wp.expired()</code></td>
+<td>是否过期，即 <code>use_count == 1</code></td>
+</tr>
+<tr>
+<td><code>wp.lock()</code></td>
+<td>若 <code>expired</code> 为 true，返回一个空的 <code>shared_ptr</code>，<br> 否则返回指向 <code>wp</code> 的资源对象的 <code>shared_ptr</code></td>
+</tr>
+<tr>
+<td><code>shared_ptr&lt;T&gt; sp(wp)</code></td>
+<td>若 <code>wp</code> 悬空，会抛出 <code>std::bad_weak_ptr</code> 异常</td>
+</tr>
+</tbody>
+</table>
+</details>
+<p><code>weak_ptr</code> 的特性:</p>
+<ul>
+<li>和 <code>shared_ptr</code> 配套使用，且不增加引用计数</li>
+<li>在悬空 (dangle) 时可以知晓 (<code>wp.expired()</code>)</li>
+</ul>
+<p><code>weak_ptr</code> 需要一个操作:</p>
+<ul>
+<li>当 <code>weak_ptr</code> 过期，返回一个空指针；否则返回引用的资源 (的 <code>share_ptr</code>)</li>
+<li>若按 <code>if !expired then 解引用</code> 实现会造成竞态条件 (<code>weak_ptr</code> 不支持解引用)，因此由 <code>lock()</code> 实现</li>
+</ul>
+<p><code>weak_ptr</code> 的代价与 <code>shared_ptr</code> 相当，需要对控制块的引用，对 weak count 的加减涉及原子操作。</p>
+<details class="hint"><summary>为什么需要 weak count</summary><p><code>weak_ptr</code> 需要一个数据结构判断是否过期，因此 <code>shared_ptr</code> 的析构逻辑为: 当 <code>ref_count=0</code>，析构资源，此时 <code>wp</code> 已经无法转换为 <code>sp</code>，然后当 <code>weak_count</code> 也为 0，再析构控制块</p>
+</details>
+<p><code>weak_ptr</code> 潜在的使用场景包括 缓存、观察者列表、打破 <code>shared_ptr</code> 的环状结构</p>
+<h4 id="1_3">(1). 缓存<a class="headerlink" href="#1_3" title="Permanent link">⏳</a></h4>
+<p>考虑一个 naive 的工厂函数，返回一个只读对象的智能指针</p>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">Widget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">loadWidget</span><span class="p">(</span><span class="n">WidgetID</span><span class="w"> </span><span class="n">id</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>场景:</p>
+<ul>
+<li><code>loadWidget</code> 是一个昂贵的操作 (需要操作文件或数据库 I/O)，且使用重复的 <code>id</code> 很常见<ul>
+<li>引入缓存，则 <code>cache</code> 和调用者都需要 <code>Widget</code> 的指针，不能用 <code>unique_ptr</code></li>
+</ul>
+</li>
+<li>调用者决定 <code>Widget</code> 的生存期：当没有 caller 使用 <code>Widget</code> 后，<code>Widget</code> 应该被销毁<ul>
+<li>使用 <code>shared_ptr</code> 由于 <code>cache</code> 必须保存一份，无法实现没有 caller 使用就被销毁</li>
+</ul>
+</li>
+<li><code>cache</code> 的指针需要判断，如果缓存的资源已经空悬就重新缓存<ul>
+<li>裸指针做不到</li>
+</ul>
+</li>
+</ul>
+<details class="hint"><summary>a quick-and-dirty implementation</summary><div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">Widget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fastLoadWidget</span><span class="p">(</span><span class="n">WidgetID</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">WidgetID</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">weak_ptr</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">Widget</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">cache</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">objPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cache</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">lock</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">objPtr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">objPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loadWidget</span><span class="p">(</span><span class="n">id</span><span class="p">);</span><span class="w"> </span><span class="c1">// unique_ptr -&gt; shared_ptr</span>
+<span class="w">        </span><span class="n">cache</span><span class="p">[</span><span class="n">id</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">objPtr</span><span class="p">;</span><span class="w">      </span><span class="c1">// shared_ptr -&gt; weak_ptr</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">objPtr</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<h4 id="2-observer-design-pattern">(2). Observer Design Pattern<a class="headerlink" href="#2-observer-design-pattern" title="Permanent link">⏳</a></h4>
+<p><code>subject</code> 和 <code>observers</code> 存在一对多的关系，一旦 <code>subject</code> 做出改变，依赖它的 <code>observers</code> 需要改变状态，因此 <code>subject</code> 通常维护一个 <code>observerList</code>。</p>
+<ul>
+<li>尽管 <code>observers</code> 是 <code>subject</code> 的成员，这是一个典型的 「无所有权」的例子，观察者和主题之间各有各的 lifespan</li>
+<li><code>subject</code> 仅需要知道保存的 <code>observer</code> 是否已经悬空，因此此处适用 <code>weak_ptr</code></li>
+</ul>
+<h4 id="3-shared_ptr_1">(3). <code>shared_ptr</code> 的循环引用<a class="headerlink" href="#3-shared_ptr_1" title="Permanent link">⏳</a></h4>
+<p><img src="./img/shared_ptr_circular_ref.png" width=540></p>
+<p>假设 <code>A</code> 和 <code>C</code> 共享 <code>B</code> 的所有权；且 <code>B</code> 指向 <code>A</code> 的指针也很有用，应该使用哪种指针:</p>
+<ul>
+<li>原始指针: &ensp; 若 <code>A</code> 先被销毁，<code>C</code> 继续指向 <code>B</code>，且 <code>B</code> 无法判定指针是否悬空</li>
+<li><code>shared_ptr</code>: &ensp; 造成循环引用，<code>C</code> 被销毁后，<code>A</code> 和 <code>B</code> 都被泄露</li>
+<li><code>weak_ptr</code>: &ensp; 不会造成循环引用，也可以判定悬空</li>
+</ul>
+<p>使用 <code>weak_ptr</code> 打破 <code>shared_ptr</code> 的循环也并不常用。以严格分层的数据结构为例，子结点只被父结点持有，父对子的引用可用 <code>unique_ptr</code> 实现，而由于子的生存期一定短于父结点，子结点不可能解引用悬挂的父指针，因此可用原始指针实现。</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../_containers/_apis/seq_api/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                
+                    seq api
+                
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../_copy_control/constructor/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                
+                    constructors
+                
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        <!-- Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a> -->
+      </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.00f9b4e0.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: ['navigation.tabs', 'tabs.changeicon', 'toc.autohide', 'colors'],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script type="module" src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js"></script>
+      
+        <script type="module" src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script type="module" src="../../../js/mkmain.js"></script>
+      
+        <script type="module" src="../../../js/katex.js"></script>
+      
+    
+  </body>
+</html>

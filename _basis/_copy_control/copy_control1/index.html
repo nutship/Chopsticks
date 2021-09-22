@@ -1,0 +1,1335 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../../assets/t.svg">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-6.1.3">
+    
+    
+      
+        
+            <title>copy and destruct - Chopsticks</title>
+        
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2cb7adb3.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.f0267088.min.css">
+        
+      
+    
+    
+    
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../css/general.css">
+    
+      <link rel="stylesheet" href="../../../css/fonts.css">
+    
+      <link rel="stylesheet" href="../../../css/code-admonition.css">
+    
+      <link rel="stylesheet" href="../../../css/katex.css">
+    
+      <link rel="stylesheet" href="../../../css/tables.css">
+    
+      <link rel="stylesheet" href="../../../css/extra/admonitions.css">
+    
+      <link rel="stylesheet" href="../../../css/extra/code-blocks.css">
+    
+      <link rel="stylesheet" href="../../../css/gadgets/book.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="rubble" data-md-color-primary="" data-md-color-accent="">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../../.." title="Chopsticks" class="md-header-nav__button md-logo" aria-label="Chopsticks">
+      
+  
+  
+  
+  
+  <svg height="512pt" viewBox="-42 0 512 512.00047" width="512pt" xmlns="http://www.w3.org/2000/svg"><path d="m428.433594 336.667969c0 31.625-21.464844 58.988281-52.191406 66.519531l-6.988282 1.710938-92.5625 22.703124c-8.386718 2.09375-17.074218-3.03125-19.183594-11.621093-2.082031-8.511719 3.121094-17.097657 11.632813-19.179688l99.550781-24.414062c.191406-.042969.382813-.097657.5625-.148438 16.195313-4.242187 27.457032-18.78125 27.457032-35.570312 0-17.054688-11.671876-31.445313-27.457032-35.582031-2.984375-.792969-6.101562-1.203126-9.328125-1.203126h-87.011719c-8.765624 0-15.859374-7.097656-15.859374-15.863281 0-8.753906 7.09375-15.859375 15.859374-15.859375h87.011719c3.160157 0 6.28125.210938 9.328125.632813 33.378906 4.558593 59.179688 33.257812 59.179688 67.875zm0 0" fill="#aed0ff"/><path d="m428.433594 336.667969c0 31.625-21.464844 58.988281-52.191406 66.519531l-6.988282 1.710938v-32.660157c16.195313-4.242187 27.457032-18.78125 27.457032-35.570312 0-17.054688-11.671876-31.445313-27.457032-35.582031v-32.292969c33.378906 4.558593 59.179688 33.257812 59.179688 67.875zm0 0" fill="#8cbcff"/><path d="m340.4375 250.957031-26.125 141.433594c-6.378906 56.769531-52.046875 99.539063-106.277344 99.539063-54.234375 0-99.902344-42.769532-106.277344-99.539063l-26.125-141.433594c-1.195312-6.492187 3.792969-12.488281 10.402344-12.488281h244c6.605469 0 11.597656 5.996094 10.402344 12.488281zm0 0" fill="#4895ff"/><path d="m340.4375 250.957031-26.125 141.433594c-6.378906 56.769531-52.046875 99.539063-106.277344 99.539063v-253.460938h122c6.605469 0 11.597656 5.996094 10.402344 12.488281zm0 0" fill="#2682ff"/><path d="m414.71875 456.371094-22.523438 25.242187c-16.957031 19.011719-45.179687 30.386719-75.367187 30.386719h-217.585937c-30.1875 0-58.410157-11.375-75.378907-30.386719l-22.511719-25.242187c-3.035156-3.402344-.625-8.808594 3.941407-8.808594h405.480469c4.570312 0 6.980468 5.40625 3.945312 8.808594zm0 0" fill="#aed0ff"/><path d="m414.71875 456.371094-22.523438 25.242187c-16.957031 19.011719-45.179687 30.386719-75.367187 30.386719h-108.792969v-64.4375h202.738282c4.570312 0 6.980468 5.40625 3.945312 8.808594zm0 0" fill="#8cbcff"/><path d="m208.988281 5.949219c-5.476562-6.839844-15.457031-7.945313-22.292969-2.46875-6.839843 5.476562-7.945312 15.457031-2.46875 22.292969 9.050782 11.308593 14.363282 33.84375-13.332031 51.4375-27.335937 17.371093-37.539062 52.558593-23.726562 81.855468l15.597656 33.089844c3.734375 7.917969 13.183594 11.316406 21.109375 7.582031s11.320312-13.1875 7.582031-21.109375l-15.597656-33.089844c-7.011719-14.871093-1.832031-32.734374 12.046875-41.550781 42.335938-26.898437 42.855469-70.839843 21.082031-98.039062zm0 0" fill="#ff5e93"/><path d="m284.28125 73.152344c5.230469-7.027344 3.773438-16.964844-3.253906-22.195313-7.027344-5.226562-16.964844-3.769531-22.191406 3.257813l-19.492188 26.195312c-11.4375 15.375-12.453125 35.921875-2.582031 52.34375 4.304687 7.164063 5.253906 13.992188-.289063 20.289063l-11.710937 13.296875c-5.789063 6.574218-5.152344 16.597656 1.421875 22.386718 6.574218 5.785157 16.597656 5.148438 22.386718-1.421874l11.707032-13.296876c12.984375-14.742187 16.566406-36.136718 3.675781-57.59375-3.21875-5.355468-2.886719-12.054687.839844-17.066406zm0 0" fill="#ff3c7d"/></svg>
+
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Chopsticks
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              copy and destruct
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../../.." class="md-tabs__link">
+        home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../" class="md-tabs__link md-tabs__link--active">
+          Basis⏳
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+
+  
+  
+   
+  
+  
+  <script>
+  document.getElementsByClassName('md-header')[0].style.setProperty('--md-primary-fg-color', '#393333');
+  var tabs1 = document.getElementsByClassName('md-tabs')[0]; if(tabs1) tabs1.style.setProperty('--md-primary-fg-color', '#393333');
+  // 'md-default-color'
+  // var tabs2 = document.getElementsByClassName('md-nav__title'); 
+  // if (tabs2)
+  //   for (var i = 0; i < tabs2.length; ++i)
+  //     tabs2[i].style.setProperty('--md-primary-fg-color', '#393333');
+  </script>
+
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Chopsticks" class="md-nav__button md-logo" aria-label="Chopsticks">
+      
+  
+  
+  
+  
+  <svg height="512pt" viewBox="-42 0 512 512.00047" width="512pt" xmlns="http://www.w3.org/2000/svg"><path d="m428.433594 336.667969c0 31.625-21.464844 58.988281-52.191406 66.519531l-6.988282 1.710938-92.5625 22.703124c-8.386718 2.09375-17.074218-3.03125-19.183594-11.621093-2.082031-8.511719 3.121094-17.097657 11.632813-19.179688l99.550781-24.414062c.191406-.042969.382813-.097657.5625-.148438 16.195313-4.242187 27.457032-18.78125 27.457032-35.570312 0-17.054688-11.671876-31.445313-27.457032-35.582031-2.984375-.792969-6.101562-1.203126-9.328125-1.203126h-87.011719c-8.765624 0-15.859374-7.097656-15.859374-15.863281 0-8.753906 7.09375-15.859375 15.859374-15.859375h87.011719c3.160157 0 6.28125.210938 9.328125.632813 33.378906 4.558593 59.179688 33.257812 59.179688 67.875zm0 0" fill="#aed0ff"/><path d="m428.433594 336.667969c0 31.625-21.464844 58.988281-52.191406 66.519531l-6.988282 1.710938v-32.660157c16.195313-4.242187 27.457032-18.78125 27.457032-35.570312 0-17.054688-11.671876-31.445313-27.457032-35.582031v-32.292969c33.378906 4.558593 59.179688 33.257812 59.179688 67.875zm0 0" fill="#8cbcff"/><path d="m340.4375 250.957031-26.125 141.433594c-6.378906 56.769531-52.046875 99.539063-106.277344 99.539063-54.234375 0-99.902344-42.769532-106.277344-99.539063l-26.125-141.433594c-1.195312-6.492187 3.792969-12.488281 10.402344-12.488281h244c6.605469 0 11.597656 5.996094 10.402344 12.488281zm0 0" fill="#4895ff"/><path d="m340.4375 250.957031-26.125 141.433594c-6.378906 56.769531-52.046875 99.539063-106.277344 99.539063v-253.460938h122c6.605469 0 11.597656 5.996094 10.402344 12.488281zm0 0" fill="#2682ff"/><path d="m414.71875 456.371094-22.523438 25.242187c-16.957031 19.011719-45.179687 30.386719-75.367187 30.386719h-217.585937c-30.1875 0-58.410157-11.375-75.378907-30.386719l-22.511719-25.242187c-3.035156-3.402344-.625-8.808594 3.941407-8.808594h405.480469c4.570312 0 6.980468 5.40625 3.945312 8.808594zm0 0" fill="#aed0ff"/><path d="m414.71875 456.371094-22.523438 25.242187c-16.957031 19.011719-45.179687 30.386719-75.367187 30.386719h-108.792969v-64.4375h202.738282c4.570312 0 6.980468 5.40625 3.945312 8.808594zm0 0" fill="#8cbcff"/><path d="m208.988281 5.949219c-5.476562-6.839844-15.457031-7.945313-22.292969-2.46875-6.839843 5.476562-7.945312 15.457031-2.46875 22.292969 9.050782 11.308593 14.363282 33.84375-13.332031 51.4375-27.335937 17.371093-37.539062 52.558593-23.726562 81.855468l15.597656 33.089844c3.734375 7.917969 13.183594 11.316406 21.109375 7.582031s11.320312-13.1875 7.582031-21.109375l-15.597656-33.089844c-7.011719-14.871093-1.832031-32.734374 12.046875-41.550781 42.335938-26.898437 42.855469-70.839843 21.082031-98.039062zm0 0" fill="#ff5e93"/><path d="m284.28125 73.152344c5.230469-7.027344 3.773438-16.964844-3.253906-22.195313-7.027344-5.226562-16.964844-3.769531-22.191406 3.257813l-19.492188 26.195312c-11.4375 15.375-12.453125 35.921875-2.582031 52.34375 4.304687 7.164063 5.253906 13.992188-.289063 20.289063l-11.710937 13.296875c-5.789063 6.574218-5.152344 16.597656 1.421875 22.386718 6.574218 5.785157 16.597656 5.148438 22.386718-1.421874l11.707032-13.296876c12.984375-14.742187 16.566406-36.136718 3.675781-57.59375-3.21875-5.355468-2.886719-12.054687.839844-17.066406zm0 0" fill="#ff3c7d"/></svg>
+
+
+    </a>
+    Chopsticks
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../.." class="md-nav__link">
+        home
+        </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      
+      
+        <a>Basis⏳</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Basis⏳" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Basis⏳ <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../" class="md-nav__link">
+        Preface
+        </a>
+    </li>
+  
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      
+      
+        <a>Basis</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Basis" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        <span class="md-nav__icon md-icon"></span>
+        Basis <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_basis/compound_type/" class="md-nav__link">
+        compound type
+        </a>
+    </li>
+  
+
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_basis/type/" class="md-nav__link">
+        type
+        </a>
+    </li>
+  
+
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_basis/list_init/" class="md-nav__link">
+        list inilization
+        </a>
+    </li>
+  
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      
+      
+        <a>Containers</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Containers" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon"></span>
+        Containers <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_containers/sequence/" class="md-nav__link">
+        1. sequential container
+        </a>
+    </li>
+  
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3-2" type="checkbox" id="nav-2-3-2">
+    
+    <label class="md-nav__link" for="nav-2-3-2">
+      
+      
+        <a>apis</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="apis" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-3-2">
+        <span class="md-nav__icon md-icon"></span>
+        apis <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_containers/_apis/seq_api/" class="md-nav__link">
+        seq api
+        </a>
+    </li>
+  
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4">
+    
+    <label class="md-nav__link" for="nav-2-4">
+      
+      
+        <a>Smart Pointers</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Smart Pointers" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        <span class="md-nav__icon md-icon"></span>
+        Smart Pointers <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_smart_pointers/ptr1/" class="md-nav__link">
+        1
+        </a>
+    </li>
+  
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-5" type="checkbox" id="nav-2-5" checked>
+    
+    <label class="md-nav__link" for="nav-2-5">
+      
+      
+        <a>Copy Control</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Copy Control" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-5">
+        <span class="md-nav__icon md-icon"></span>
+        Copy Control <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../constructor/" class="md-nav__link">
+        constructors
+        </a>
+    </li>
+  
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        copy and destruct
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    
+        <a href="./" class="md-nav__link md-nav__link--active">
+        copy and destruct
+        </a>
+    
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 拷贝
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 拷贝">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    (1). 拷贝构造函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    (2). 赋值 (拷贝) 运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    (3). 阻止拷贝
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2. 析构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    3. 移动
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 移动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    (1). 右值引用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    (2). 移动构造函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    (3). 移动赋值运算符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 三/五法则
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 三/五法则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    需要析构函数的类也需要拷贝和赋值操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    需要拷贝也需要赋值，反之亦然
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hasptr" class="md-nav__link">
+    例: 设计 HasPtr
+  </a>
+  
+    <nav class="md-nav" aria-label="例: 设计 HasPtr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    (1). 行为像值的类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    (2). 行为像指针的类
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message" class="md-nav__link">
+    例: 设计 Message
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../move/" class="md-nav__link">
+        move
+        </a>
+    </li>
+  
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-6" type="checkbox" id="nav-2-6">
+    
+    <label class="md-nav__link" for="nav-2-6">
+      
+      
+        <a>OOP</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="OOP" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-6">
+        <span class="md-nav__icon md-icon"></span>
+        OOP <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_oop/a/" class="md-nav__link">
+        ?
+        </a>
+    </li>
+  
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-7" type="checkbox" id="nav-2-7">
+    
+    <label class="md-nav__link" for="nav-2-7">
+      
+      
+        <a>MISC</a>
+      
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="MISC" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-7">
+        <span class="md-nav__icon md-icon"></span>
+        MISC <!-- maybe this is only for title of tabs -->
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+    <li class="md-nav__item">
+        <a href="../../_misc/rvo_nrvo/" class="md-nav__link">
+        copy elision &#58; rvo/nrvo
+        </a>
+    </li>
+  
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 拷贝
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 拷贝">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    (1). 拷贝构造函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    (2). 赋值 (拷贝) 运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    (3). 阻止拷贝
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2. 析构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    3. 移动
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 移动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    (1). 右值引用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    (2). 移动构造函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    (3). 移动赋值运算符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 三/五法则
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 三/五法则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    需要析构函数的类也需要拷贝和赋值操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    需要拷贝也需要赋值，反之亦然
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hasptr" class="md-nav__link">
+    例: 设计 HasPtr
+  </a>
+  
+    <nav class="md-nav" aria-label="例: 设计 HasPtr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    (1). 行为像值的类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    (2). 行为像指针的类
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message" class="md-nav__link">
+    例: 设计 Message
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                    <h1>copy and destruct</h1>
+                  
+                
+                <h3 id="1">1. 拷贝<a class="headerlink" href="#1" title="Permanent link">⏳</a></h3>
+<h4 id="1_1">(1). 拷贝构造函数<a class="headerlink" href="#1_1" title="Permanent link">⏳</a></h4>
+<ul>
+<li>可视为单参构造函数的一种特例，可显式调用也可隐式调用，(几乎没有 <code>explicit</code> 的情况)</li>
+<li>参数必须是引用类型 (通常加 <code>const</code>)。否则，为了调用拷贝 ctor 需要拷贝实参，而拷贝实参又需要调用拷贝 ctor</li>
+<li>若未定义拷贝构造函数，编译器会默认定义一个合成版本<ul>
+<li>默认行为是将所有非 <code>static</code> 成员拷贝到新对象中，对于类对象会调用其拷贝 ctor，对于数组会拷贝每一个单元</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Book</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">nPages</span><span class="p">;</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// 和合成的拷贝构造函数逻辑等价</span>
+<span class="w">    </span><span class="n">Book</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Book</span><span class="o">&amp;</span><span class="w"> </span><span class="n">book</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">name</span><span class="p">(</span><span class="n">book</span><span class="p">.</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">nPages</span><span class="p">(</span><span class="n">book</span><span class="p">.</span><span class="n">nPages</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h4 id="2">(2). 赋值 (拷贝) 运算符<a class="headerlink" href="#2" title="Permanent link">⏳</a></h4>
+<p>类需要控制其对象如何赋值</p>
+<ul>
+<li>赋值运算符必须在类内重载，为实现右向左的连续赋值，返回值是自身引用 <code>Obj&amp; o = *this;</code></li>
+<li>若未定义赋值运算符，编译器会定义一个合成版本，默认行为是将右侧运算对象的非 static 成员赋值给左侧对象的成员</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">Book</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Book</span><span class="o">&amp;</span><span class="w"> </span><span class="n">book</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">book</span><span class="p">.</span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">nPages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">book</span><span class="p">.</span><span class="n">nPages</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h4 id="3">(3). 阻止拷贝<a class="headerlink" href="#3" title="Permanent link">⏳</a></h4>
+<p>即使不定义拷贝控制成员，编译器仍会自动生成，禁止拷贝需要 <code>=delete</code> 显式声明</p>
+<ul>
+<li><code>=delete</code> 可以对任何函数声明，通知编译器不希望定义这些成员</li>
+<li>如果对析构函数声明 <code>=delete</code>，由于无法析构，该对象只能由 <code>new</code> 创建，且不能被 <code>delete</code></li>
+<li>旧的标准实现阻止拷贝的方式是声明 <code>private</code></li>
+</ul>
+<p>如果一个类有成员无法被默认构造、拷贝、赋值或销毁，对应 合成函数 是 <code>=delete</code> 的</p>
+<ul>
+<li>如果 类某成员的析构函数是删除的或不可访问的 / 类有一个无类内初始值的引用成员 / 类有一个无类内初始值且无默认 ctor 的 const 成员，那么该类的合成构造函数被定义为删除的</li>
+<li>如果 类某成员的赋值运算符是删除的或不可访问的 / 类有引用成员 / 类有 const 成员，那么该类的合成赋值运算符被定义为删除的</li>
+<li>如果 类某成员的拷贝构造函数是删除的或不可访问的 / 类某成员的析构函数是删除的或不可访问的，那么该类的合成拷贝 ctor 被定义为删除的</li>
+</ul>
+<p>(?-p451)</p>
+<h3 id="2_1">2. 析构<a class="headerlink" href="#2_1" title="Permanent link">⏳</a></h3>
+<p>对于析构函数:</p>
+<ul>
+<li>析构函数首先执行函数体，然后隐式地按初始化的逆序销毁成员，函数体内通常释放对象在生存期内分配的所有资源</li>
+<li>析构函数没有参数，无法被重载，只能有一个</li>
+<li>若未定义析构函数，编译器会默认定义一个合成版本，其函数体为空</li>
+</ul>
+<p>为什么要逆序析构:</p>
+<ul>
+<li>如果顺序析构，可能导致后面的元素持有无效的引用或指针</li>
+</ul>
+<p>对象被销毁时会调用析构函数，调用的时机</p>
+<ul>
+<li>栈对象: 在离开作用域时被销毁</li>
+<li>堆对象: 对引用它的指针 <code>delete</code> 时被销毁</li>
+<li>临时对象: 创建它的完整表达式结束时被销毁</li>
+</ul>
+<p>对象被析构，其成员被析构；容器/数组被析构，其元素被析构。</p>
+<h3 id="3_1">3. 移动<a class="headerlink" href="#3_1" title="Permanent link">⏳</a></h3>
+<p>假设需要拷贝一个临时对象，随后舍弃临时对象。如果调用拷贝函数，拷贝临时对象中的资源会造成一定浪费，更好的方法是接管临时对象的资源，右值引用就是为移动语义创造的一种标记。</p>
+<h4 id="1_2">(1). 右值引用<a class="headerlink" href="#1_2" title="Permanent link">⏳</a></h4>
+<p>和左值引用相反，右值引用只能绑定到右值上，右值寓义短暂</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">rr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>右值引用绑定左值，需要 <code>&lt;utility&gt;</code> 中的 <code>move</code> 函数</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">rr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">r</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<h4 id="2_2">(2). 移动构造函数<a class="headerlink" href="#2_2" title="Permanent link">⏳</a></h4>
+<ul>
+<li>移动构造函数需要完成: 接管资源，以移后源被销毁为前提，考虑对象的析构函数有效 (以及如果其他成员函数会被调用的有效性)</li>
+<li>若传入右值且未定义移动 ctor，也会调用拷贝 ctor (合理)</li>
+<li>当一个类没有定义任何拷贝控制成员 (3 个)，且每个非 static 成员都可移动，编译器才会合成移动 ctor、移动赋值</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">Book</span><span class="p">(</span><span class="n">Book</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">book</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">rsc</span><span class="p">(</span><span class="n">book</span><span class="p">.</span><span class="n">rsc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">book</span><span class="p">.</span><span class="n">rsc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<details class="hint"><summary>移动、标准库容器和异常</summary><p><code>vector</code> 需要保证 <code>push_back</code> 发生异常时保持不变。考虑 <code>vector</code> 的 reallocate 过程可能的情况:</p>
+<ul>
+<li>若使用拷贝构造函数，旧元素始终保持不变，若发生异常则交由用户处理</li>
+<li>若使用移动构造函数，在还未移动完时发生异常就会产生问题</li>
+</ul>
+<p>因此，要想让 <code>vector</code> 使用移动操作，定义移动 ctor 的同时还要声明 <code>noexcept</code></p>
+</details>
+<h4 id="3_2">(3). 移动赋值运算符<a class="headerlink" href="#3_2" title="Permanent link">⏳</a></h4>
+<p>需要额外考虑自赋值</p>
+<div class="highlight"><pre><span></span><code><span class="n">Book</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">operator</span><span class="p">(</span><span class="n">Book</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">book</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">book</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="4">4. 三/五法则<a class="headerlink" href="#4" title="Permanent link">⏳</a></h3>
+<h4 id="_1">需要析构函数的类也需要拷贝和赋值操作<a class="headerlink" href="#_1" title="Permanent link">⏳</a></h4>
+<p>通常对于析构函数的需求更加明显，而要是需要析构函数，几乎一定会需要拷贝和赋值。</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">HasPtr</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="o">*</span><span class="n">ps</span><span class="p">;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">HasPtr</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string</span><span class="p">())</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ps</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">(</span><span class="n">s</span><span class="p">)),</span><span class="w"> </span><span class="n">i</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">        </span><span class="o">~</span><span class="n">HasPtr</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="k">delete</span><span class="w"> </span><span class="n">ps</span><span class="p">;</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>默认的拷贝行为会拷贝指针，在析构时可能会 <code>delete</code> 同一指针多次，这是 undefined 的。</p>
+<h4 id="_2">需要拷贝也需要赋值，反之亦然<a class="headerlink" href="#_2" title="Permanent link">⏳</a></h4>
+<p>举例，需要设计一个类，每个对象有个唯一 id</p>
+<ul>
+<li>拷贝时，由于构造新对象，需要调整 id</li>
+<li>赋值时，由于对象不同，要避免 id 被复制</li>
+</ul>
+<h3 id="hasptr">例: 设计 <code>HasPtr</code><a class="headerlink" href="#hasptr" title="Permanent link">⏳</a></h3>
+<p>设计类的时候，确定需要析构函数后，往往需要考虑它的拷贝语义:</p>
+<ul>
+<li>类的行为像值，有自己的状态，副本和原对象独立</li>
+<li>类的行为像指针，共享底层数据</li>
+</ul>
+<h4 id="1_3">(1). 行为像值的类<a class="headerlink" href="#1_3" title="Permanent link">⏳</a></h4>
+<p><font class="u_1"></p>
+<ul>
+<li>copy ctor: 拷贝 <code>string</code> 的值</li>
+<li>dtor: 释放 <code>string</code></li>
+<li>op=: 释放当前 <code>string</code>，从右侧对象拷贝 <code>string</code></li>
+</ul>
+<p></font></p>
+<details class="adcodes"><summary>example: like a value</summary><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">HasPtr</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="o">*</span><span class="n">ps</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">HasPtr</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string</span><span class="p">())</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ps</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">(</span><span class="n">s</span><span class="p">)),</span><span class="w"> </span><span class="n">i</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">HasPtr</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">HasPtr</span><span class="w"> </span><span class="o">&amp;</span><span class="n">hp</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ps</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">(</span><span class="o">*</span><span class="n">hp</span><span class="p">.</span><span class="n">ps</span><span class="p">)),</span><span class="w"> </span><span class="n">i</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">HasPtr</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">HasPtr</span><span class="w"> </span><span class="o">&amp;</span><span class="n">hp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">newp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">(</span><span class="o">*</span><span class="n">hp</span><span class="p">.</span><span class="n">ps</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">delete</span><span class="w"> </span><span class="n">ps</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">ps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newp</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hp</span><span class="p">.</span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="o">~</span><span class="n">HasPtr</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="k">delete</span><span class="w"> </span><span class="n">ps</span><span class="p">;</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+</details>
+<p>需要额外注意赋值运算符拷贝自身的情况，如果直接释放了 <code>ps</code> 就会出错</p>
+<h4 id="2_3">(2). 行为像指针的类<a class="headerlink" href="#2_3" title="Permanent link">⏳</a></h4>
+<p><font class="u_1"></p>
+<ul>
+<li>ctor 初始化类，创建新的引用计数</li>
+<li>copy ctor 递增计数器，拷贝成员</li>
+<li>dtor 递减计数器，如果减为 0 则释放资源</li>
+<li>eq= 递增右侧对象计数器，递减左侧计数器，并判断左侧是否需要销毁</li>
+</ul>
+<p></font></p>
+<details class="adcodes"><summary>example: like a ptr</summary><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">HasPtr</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="o">*</span><span class="n">ps</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">size_t</span><span class="w"> </span><span class="o">*</span><span class="n">use</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">HasPtr</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string</span><span class="p">())</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ps</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">(</span><span class="n">s</span><span class="p">)),</span><span class="w"> </span><span class="n">i</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">use</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">size_t</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">HasPtr</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">HasPtr</span><span class="w"> </span><span class="o">&amp;</span><span class="n">hp</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ps</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">ps</span><span class="p">),</span><span class="w"> </span><span class="n">i</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">i</span><span class="p">),</span><span class="w"> </span><span class="n">use</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">use</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="o">++*</span><span class="n">use</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">HasPtr</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">HasPtr</span><span class="w"> </span><span class="o">&amp;</span><span class="n">hp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="o">++*</span><span class="n">hp</span><span class="p">.</span><span class="n">use</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">--*</span><span class="n">use</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="k">delete</span><span class="w"> </span><span class="n">ps</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="k">delete</span><span class="w"> </span><span class="n">use</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hp</span><span class="p">.</span><span class="n">use</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">ps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hp</span><span class="p">.</span><span class="n">ps</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hp</span><span class="p">.</span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="o">~</span><span class="n">HasPtr</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">--*</span><span class="n">use</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="k">delete</span><span class="w"> </span><span class="n">ps</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="k">delete</span><span class="w"> </span><span class="n">use</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+</details>
+<h3 id="message">例: 设计 Message<a class="headerlink" href="#message" title="Permanent link">⏳</a></h3>
+<p><code>Message</code> 可以出现在多个 <code>Folder</code> 中，<code>Folder</code> 也可以包含多个 <code>Message</code>，二者各维护一个指针数组</p>
+<ul>
+<li>拷贝: 拷贝 <code>Message</code> 的消息内容，且两个消息出现在相同的 <code>Folder</code> 中</li>
+<li>析构: 确保没有 <code>Folder</code> 保存被销毁的 <code>Message</code> 指针</li>
+<li>移动: 注意 <code>msg-&gt;folders.clear()</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Message</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="k">class</span> <span class="nc">Folder</span><span class="p">;</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">contents</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">Folder</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="n">folders</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">moveFolders</span><span class="p">(</span><span class="n">Message</span><span class="w"> </span><span class="o">*</span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">folders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">folders</span><span class="p">);</span><span class="w"> </span><span class="c1">// 使用 set 的移动赋值运算符</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="nl">f</span> <span class="p">:</span><span class="w"> </span><span class="n">folders</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">f</span><span class="p">.</span><span class="n">rmvMsg</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">f</span><span class="p">.</span><span class="n">addMsg</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">folders</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span><span class="w">  </span><span class="c1">// 考虑 ~Message(), 确保销毁 msg 是无害的</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">Message</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">contents</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">contents</span><span class="p">),</span><span class="w"> </span><span class="n">folders</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">folders</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="nl">f</span> <span class="p">:</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">folders</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">f</span><span class="o">-&gt;</span><span class="n">addMsg</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Message</span><span class="p">(</span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">contents</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">contents</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">moveFolders</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="o">~</span><span class="n">Message</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="nl">f</span> <span class="p">:</span><span class="w"> </span><span class="n">folders</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">f</span><span class="p">.</span><span class="n">rmvMsg</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Message</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="nl">f</span> <span class="p">:</span><span class="w"> </span><span class="n">folders</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">f</span><span class="p">.</span><span class="n">rmvMsg</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">contents</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">folders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">folders</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="nl">f</span> <span class="p">:</span><span class="w"> </span><span class="n">folders</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">f</span><span class="p">.</span><span class="n">addMsg</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Message</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="nl">f</span> <span class="p">:</span><span class="w"> </span><span class="n">folders</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="n">f</span><span class="p">.</span><span class="n">rmvMsg</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">contents</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">moveFolders</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">save</span><span class="p">(</span><span class="n">Folder</span><span class="w"> </span><span class="o">&amp;</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">folders</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="o">&amp;</span><span class="n">f</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">f</span><span class="p">.</span><span class="n">addMsg</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">remove</span><span class="p">(</span><span class="n">Folder</span><span class="w"> </span><span class="o">&amp;</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">folders</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="o">&amp;</span><span class="n">f</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">f</span><span class="p">.</span><span class="n">rmvMsg</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../constructor/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                
+                    constructors
+                
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../move/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                
+                    move
+                
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        <!-- Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a> -->
+      </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.00f9b4e0.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: ['navigation.tabs', 'tabs.changeicon', 'toc.autohide', 'colors'],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script type="module" src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js"></script>
+      
+        <script type="module" src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script type="module" src="../../../js/mkmain.js"></script>
+      
+        <script type="module" src="../../../js/katex.js"></script>
+      
+    
+  </body>
+</html>
