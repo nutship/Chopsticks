@@ -1,17 +1,19 @@
 ### 1. RAII (Resource Acquisition Is Initialization)
 
-#### (1). 自动析构
+#### (1). 基本定义
 
-RAII 是 C++ 管理资源的方式: 利用对象生存期结束调用 dtor 的特性，把资源封装在类中
+RAII 是 C++ 管理资源的方式
 
--   栈对象离开作用域即结束生存期
--   堆对象被释放后结束生存期
+-   RAII 类在 ctor 中获取资源，在 dtor 中释放资源，并限制拷贝成员的行为
+-   对象生存期结束后调用 dtor
+-   栈对象离开作用域即结束生存期，堆对象被释放后结束生存期
 
-这样类使用者获得了自动 gc。把资源封装在 RAII 管理类中 的好处举例
+由此对象的生存期和资源的生存期一致。这样类使用者获得了自动 gc。自动 gc 的好处:
 
 <!-- prettier-ignore-start -->
 
-> 把锁封装在 RAII 管理类中
+> (1). 栈变量使用 RAII 类
+>
 ```cpp
 void bad() {
     m.lock();         // 请求互斥体
@@ -21,7 +23,7 @@ void bad() {
 }
 ```
 >
-> 将互斥体封装在 class 中，生存期结束后自动释放
+> 将互斥体封装在 class 中，生存期结束后自动释放 
 >
 ```cpp
 void good() {
@@ -30,38 +32,79 @@ void good() {
     if (...) return;
 }
 ```
+> (2). 成员变量使用 RAII 类
+> 
+```cpp
+class Obj {
+    std::lock_guard<std::mutex> lock(m);
+    ...
+};
+```
+> 对象析构前逆序执行成员的析构，对象的树结构自动地被有效析构
 
 <!-- prettier-ignore-end -->
 
-#### (2). 使用 RAII 类的准则
+#### (2). 所有权
 
-判断如何使用 RAII 类，需考虑所有权 (ownership):
+RAII 和 ownership 挂钩，广义的说，对象 A 负责资源 B 的创建和释放 $\Longrightarrow$ A owns B。以智能指针为例:
 
--   创建 A 需要创建 B，析构 A 也需要析构 B，则 A 独占 B
--   创建 A 需要增加对 B 的引用，析构 A 删除这个引用，则 B 被 A 共享
--   创建 A 和析构 A 对 B 没影响，无所有权语义
-
-智能指针是管理内存资源的 RAII 类，以其为例:
-
--   有所有权的语义，即指针需要作为资源被管理，使用智能指针
-    -   独占所有权，`unique_ptr`
-    -   共享所有权, `shared_ptr`
+-   独占所有权，`unique_ptr`: ctor 初始化，dtor 释放，move-only
+-   共享所有权, `shared_ptr`: ctor 和 dtor 根据引用计数的情况执行，拷贝增加引用计数，赋值增加一个减少一个，移动不变
 -   无所有权语义，只是用裸指针访问资源: 访问时保证资源存在，生存期结束后也不需要它释放资源
 
 ### 2. `unique_ptr`
 
-关于独占所有权的智能指针的发展:
+#### (1). 基本操作
 
--   `auto_ptr`:&ensp; 旧 C++ 的产物，使用拷贝和赋值实现「独占所有权」的「移动语义」，这导致了赋值会使原对象变为 null 的迷惑行为，以及无法将 `auto_ptr` 放入容器
--   `unique_ptr`:&ensp; C++11 引入移动语义的产物，move-only 且解决了 `auto_ptr` 的痛点
+| op                                                    | description                                                   |
+| ----------------------------------------------------- | ------------------------------------------------------------- |
+| `unique_ptr<T> u`<br> `unique_ptr<T, D> u`            | 空 `unique_ptr`                                               |
+| `unique_ptr<T> u(new T)`                              | 注意不能拷贝初始化                                            |
+| `u = nullptr`                                         | 释放 `u` 指向的对象，并将 `u` 置为空                          |
+| `u.release()`                                         | `u` 放弃控制权: 返回指针，并置为空                            |
+| `u.reset()` <br> `u.reset(q)` <br> `u.reset(nullptr)` | 释放 `u` 指向的对象，并置为空，如果给了参数，`u` 指向给定对象 |
+| `u.get()`                                             | 返回 `u` 中保存的指针，应小心使用                             |
+| transfer ownership                                    | 见下                                                          |
+| 给空 `unique_ptr` 赋值                                | `u.reset(p)`                                                  |
 
-`unique_ptr` 的特点:
+#### (2). 移动语义
 
--   额外空间开销小，可近似认为等于裸指针；move-only；管理独占所有权语义的指针
--   支持自定义删除器，有状态的删除器和函数指针会增加 `unique_ptr` 对象的大小
--   很容易转化为 `shared_ptr`
+??? hint "transfer ownership"
 
-// ToDo: example of factory
+    `unique_ptr` 关键的操作之一是转移指针所有权 (i.e. 移动语义)，实现方式
+
+    ```cpp
+    // 1
+    unique_ptr<string> p1(p2.release());
+    unique_ptr<string> p3(new string(""));
+    p3.reset(p4.release());
+    // 2
+    unique_ptr<string> p5 = std::move(p6);
+    ```
+
+    对比:
+
+    -   方式 1: 可读性差，且不会移动 custom deleter
+    -   方式 2: 完美
+
+??? hint "factory method"
+
+    ```cpp
+    unique_ptr<SomeObj> create_obj(...) {
+        return unique_ptr<SomeObj>(new SomeObj(...));
+    }
+    ```
+
+    可以返回 `unique_ptr` 的原因: 栈上对象生存期结束，C++ 的 copy elision 机制会优先尝试移动，不行的话再尝试拷贝
+
+#### (3). vs `auto_ptr`
+
+`auto_ptr` 是旧 C++ 实现独占所有权的智能指针
+
+-   `auto_ptr` 需要能存入容器，而容器是值语义的，`auto_ptr` 把赋值当移动使
+-   赋值使原指针变为 `null`，导致迷惑行为，例如无法排序
+
+// ToDo: an example of factory
 
 ### 3. `shared_ptr`
 
